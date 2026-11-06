@@ -1,0 +1,3402 @@
+[
+  {
+    "source": "sample_dataset",
+    "severity": "info",
+    "category": "authentication",
+    "title": "Failed SSH login",
+    "description": "Multiple SSH authentication failures from 192.0.2.14 against ws-027.corp.example",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-06T12:44:35.295Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1000",
+      "account": "analyst.j",
+      "event_index": 1
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "high",
+    "category": "authentication",
+    "title": "Successful login after repeated failures",
+    "description": "Account analyst.j authenticated from 203.0.113.18 after a burst of failed attempts",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-06T12:26:35.296Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1001",
+      "account": "svc-build",
+      "event_index": 2
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "medium",
+    "category": "authentication",
+    "title": "Account lockout triggered",
+    "description": "Identity provider locked svc-build after repeated invalid passwords from 198.51.100.27",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-06T12:08:35.296Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1002",
+      "account": "administrator",
+      "event_index": 3
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "info",
+    "category": "authentication",
+    "title": "Unusual sign-in location",
+    "description": "User administrator signed in from a network not seen in the previous 30 days",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-06T11:50:35.296Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1003",
+      "account": "analyst.j",
+      "event_index": 4
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "critical",
+    "category": "authentication",
+    "title": "Privileged account login",
+    "description": "Privileged account analyst.j opened an interactive session on app-09.corp.example",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-06T11:32:35.296Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1004",
+      "account": "svc-build",
+      "event_index": 5
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "medium",
+    "category": "authentication",
+    "title": "MFA challenge denied",
+    "description": "Repeated MFA challenges for svc-build were denied from 198.51.100.27",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-06T11:19:35.296Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1005",
+      "account": "administrator",
+      "event_index": 6
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "low",
+    "category": "authentication",
+    "title": "Service account password failure",
+    "description": "Service account administrator failed authentication against ws-027.corp.example",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-06T11:01:35.296Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1006",
+      "account": "analyst.j",
+      "event_index": 7
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "critical",
+    "category": "authentication",
+    "title": "New local account created",
+    "description": "A local account analyst.j was created outside the approved change window",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-06T10:43:35.296Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1007",
+      "account": "svc-build",
+      "event_index": 8
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "high",
+    "category": "authentication",
+    "title": "Failed SSH login",
+    "description": "Multiple SSH authentication failures from 198.51.100.27 against db-002.corp.example",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-06T10:25:35.296Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1008",
+      "account": "administrator",
+      "event_index": 9
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "low",
+    "category": "authentication",
+    "title": "Successful login after repeated failures",
+    "description": "Account administrator authenticated from 192.0.2.14 after a burst of failed attempts",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-06T10:07:35.296Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1009",
+      "account": "analyst.j",
+      "event_index": 10
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "info",
+    "category": "authentication",
+    "title": "Account lockout triggered",
+    "description": "Identity provider locked analyst.j after repeated invalid passwords from 203.0.113.18",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-06T09:54:35.296Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1010",
+      "account": "svc-build",
+      "event_index": 11
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "high",
+    "category": "authentication",
+    "title": "Unusual sign-in location",
+    "description": "User svc-build signed in from a network not seen in the previous 30 days",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-06T09:36:35.296Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1011",
+      "account": "administrator",
+      "event_index": 12
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "medium",
+    "category": "authentication",
+    "title": "Privileged account login",
+    "description": "Privileged account administrator opened an interactive session on ws-027.corp.example",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-06T09:18:35.296Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1012",
+      "account": "analyst.j",
+      "event_index": 13
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "info",
+    "category": "authentication",
+    "title": "MFA challenge denied",
+    "description": "Repeated MFA challenges for analyst.j were denied from 203.0.113.18",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-06T09:00:35.296Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1013",
+      "account": "svc-build",
+      "event_index": 14
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "critical",
+    "category": "authentication",
+    "title": "Service account password failure",
+    "description": "Service account svc-build failed authentication against db-002.corp.example",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-06T08:42:35.296Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1014",
+      "account": "administrator",
+      "event_index": 15
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "medium",
+    "category": "authentication",
+    "title": "New local account created",
+    "description": "A local account administrator was created outside the approved change window",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-06T08:29:35.296Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1015",
+      "account": "analyst.j",
+      "event_index": 16
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "low",
+    "category": "authentication",
+    "title": "Failed SSH login",
+    "description": "Multiple SSH authentication failures from 203.0.113.18 against app-09.corp.example",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-06T08:11:35.296Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1016",
+      "account": "svc-build",
+      "event_index": 17
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "critical",
+    "category": "authentication",
+    "title": "Successful login after repeated failures",
+    "description": "Account svc-build authenticated from 198.51.100.27 after a burst of failed attempts",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-06T07:53:35.296Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1017",
+      "account": "administrator",
+      "event_index": 18
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "high",
+    "category": "authentication",
+    "title": "Account lockout triggered",
+    "description": "Identity provider locked administrator after repeated invalid passwords from 192.0.2.14",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-06T07:35:35.296Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1018",
+      "account": "analyst.j",
+      "event_index": 19
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "low",
+    "category": "authentication",
+    "title": "Unusual sign-in location",
+    "description": "User analyst.j signed in from a network not seen in the previous 30 days",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-06T07:17:35.296Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1019",
+      "account": "svc-build",
+      "event_index": 20
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "info",
+    "category": "authentication",
+    "title": "Privileged account login",
+    "description": "Privileged account svc-build opened an interactive session on db-002.corp.example",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-06T07:04:35.296Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1020",
+      "account": "administrator",
+      "event_index": 21
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "high",
+    "category": "authentication",
+    "title": "MFA challenge denied",
+    "description": "Repeated MFA challenges for administrator were denied from 192.0.2.14",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-06T06:46:35.296Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1021",
+      "account": "analyst.j",
+      "event_index": 22
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "medium",
+    "category": "authentication",
+    "title": "Service account password failure",
+    "description": "Service account analyst.j failed authentication against app-09.corp.example",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-06T06:28:35.296Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1022",
+      "account": "svc-build",
+      "event_index": 23
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "info",
+    "category": "authentication",
+    "title": "New local account created",
+    "description": "A local account svc-build was created outside the approved change window",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-06T06:10:35.296Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1023",
+      "account": "administrator",
+      "event_index": 24
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "critical",
+    "category": "authentication",
+    "title": "Failed SSH login",
+    "description": "Multiple SSH authentication failures from 192.0.2.14 against ws-027.corp.example",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-06T05:52:35.296Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1024",
+      "account": "analyst.j",
+      "event_index": 25
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "medium",
+    "category": "authentication",
+    "title": "Successful login after repeated failures",
+    "description": "Account analyst.j authenticated from 203.0.113.18 after a burst of failed attempts",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-06T05:39:35.296Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1025",
+      "account": "svc-build",
+      "event_index": 26
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "low",
+    "category": "authentication",
+    "title": "Account lockout triggered",
+    "description": "Identity provider locked svc-build after repeated invalid passwords from 198.51.100.27",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-06T05:21:35.296Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1026",
+      "account": "administrator",
+      "event_index": 27
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "critical",
+    "category": "authentication",
+    "title": "Unusual sign-in location",
+    "description": "User administrator signed in from a network not seen in the previous 30 days",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-06T05:03:35.296Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1027",
+      "account": "analyst.j",
+      "event_index": 28
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "high",
+    "category": "authentication",
+    "title": "Privileged account login",
+    "description": "Privileged account analyst.j opened an interactive session on app-09.corp.example",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-06T04:45:35.296Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1028",
+      "account": "svc-build",
+      "event_index": 29
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "low",
+    "category": "authentication",
+    "title": "MFA challenge denied",
+    "description": "Repeated MFA challenges for svc-build were denied from 198.51.100.27",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-06T04:27:35.296Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1029",
+      "account": "administrator",
+      "event_index": 30
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "info",
+    "category": "authentication",
+    "title": "Service account password failure",
+    "description": "Service account administrator failed authentication against ws-027.corp.example",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-06T04:14:35.296Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1030",
+      "account": "analyst.j",
+      "event_index": 31
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "high",
+    "category": "authentication",
+    "title": "New local account created",
+    "description": "A local account analyst.j was created outside the approved change window",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-06T03:56:35.296Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1031",
+      "account": "svc-build",
+      "event_index": 32
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "medium",
+    "category": "authentication",
+    "title": "Failed SSH login",
+    "description": "Multiple SSH authentication failures from 198.51.100.27 against db-002.corp.example",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-06T03:38:35.296Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1032",
+      "account": "administrator",
+      "event_index": 33
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "info",
+    "category": "authentication",
+    "title": "Successful login after repeated failures",
+    "description": "Account administrator authenticated from 192.0.2.14 after a burst of failed attempts",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-06T03:20:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1033",
+      "account": "analyst.j",
+      "event_index": 34
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "critical",
+    "category": "authentication",
+    "title": "Account lockout triggered",
+    "description": "Identity provider locked analyst.j after repeated invalid passwords from 203.0.113.18",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-06T03:02:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1034",
+      "account": "svc-build",
+      "event_index": 35
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "medium",
+    "category": "authentication",
+    "title": "Unusual sign-in location",
+    "description": "User svc-build signed in from a network not seen in the previous 30 days",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-06T02:49:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1035",
+      "account": "administrator",
+      "event_index": 36
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "low",
+    "category": "authentication",
+    "title": "Privileged account login",
+    "description": "Privileged account administrator opened an interactive session on ws-027.corp.example",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-06T02:31:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1036",
+      "account": "analyst.j",
+      "event_index": 37
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "critical",
+    "category": "authentication",
+    "title": "MFA challenge denied",
+    "description": "Repeated MFA challenges for analyst.j were denied from 203.0.113.18",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-06T02:13:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1037",
+      "account": "svc-build",
+      "event_index": 38
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "high",
+    "category": "authentication",
+    "title": "Service account password failure",
+    "description": "Service account svc-build failed authentication against db-002.corp.example",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-06T01:55:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1038",
+      "account": "administrator",
+      "event_index": 39
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "low",
+    "category": "authentication",
+    "title": "New local account created",
+    "description": "A local account administrator was created outside the approved change window",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-06T01:37:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1039",
+      "account": "analyst.j",
+      "event_index": 40
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "info",
+    "category": "network",
+    "title": "Port scan detected",
+    "description": "Sequential connection attempts across 56 ports were observed from 203.0.113.18",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-06T01:24:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1040",
+      "account": "svc-build",
+      "event_index": 41
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "high",
+    "category": "network",
+    "title": "Unusual outbound connection",
+    "description": "Host db-002.corp.example opened an outbound connection to 198.51.100.27:9001 outside its baseline",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-06T01:06:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1041",
+      "account": "administrator",
+      "event_index": 42
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "medium",
+    "category": "network",
+    "title": "DNS query to suspicious domain",
+    "description": "Resolver observed repeated queries for fileshare.example from ws-027.corp.example",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-06T00:48:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1042",
+      "account": "analyst.j",
+      "event_index": 43
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "info",
+    "category": "network",
+    "title": "Firewall denied connection",
+    "description": "Firewall denied a connection from 203.0.113.18 to internal service app-09.corp.example:445",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-06T00:30:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1043",
+      "account": "svc-build",
+      "event_index": 44
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "critical",
+    "category": "network",
+    "title": "Unexpected east-west traffic",
+    "description": "Workstation db-002.corp.example contacted an unapproved peer at 198.51.100.27",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-06T00:12:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1044",
+      "account": "administrator",
+      "event_index": 45
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "medium",
+    "category": "network",
+    "title": "Beacon-like connection cadence",
+    "description": "Repeated outbound connections at a regular interval were observed from ws-027.corp.example",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-05T23:59:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1045",
+      "account": "analyst.j",
+      "event_index": 46
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "low",
+    "category": "network",
+    "title": "Large outbound transfer",
+    "description": "Endpoint app-09.corp.example transferred an unusually large amount of data to 203.0.113.18",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-05T23:41:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1046",
+      "account": "svc-build",
+      "event_index": 47
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "critical",
+    "category": "network",
+    "title": "New listening service",
+    "description": "A new listener on port 9001 was detected on db-002.corp.example",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-05T23:23:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1047",
+      "account": "administrator",
+      "event_index": 48
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "high",
+    "category": "network",
+    "title": "Port scan detected",
+    "description": "Sequential connection attempts across 64 ports were observed from 192.0.2.14",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-05T23:05:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1048",
+      "account": "analyst.j",
+      "event_index": 49
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "low",
+    "category": "network",
+    "title": "Unusual outbound connection",
+    "description": "Host app-09.corp.example opened an outbound connection to 203.0.113.18:445 outside its baseline",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-05T22:47:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1049",
+      "account": "svc-build",
+      "event_index": 50
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "info",
+    "category": "network",
+    "title": "DNS query to suspicious domain",
+    "description": "Resolver observed repeated queries for fileshare.example from db-002.corp.example",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-05T22:34:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1050",
+      "account": "administrator",
+      "event_index": 51
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "high",
+    "category": "network",
+    "title": "Firewall denied connection",
+    "description": "Firewall denied a connection from 192.0.2.14 to internal service ws-027.corp.example:8080",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-05T22:16:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1051",
+      "account": "analyst.j",
+      "event_index": 52
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "medium",
+    "category": "network",
+    "title": "Unexpected east-west traffic",
+    "description": "Workstation app-09.corp.example contacted an unapproved peer at 203.0.113.18",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-05T21:58:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1052",
+      "account": "svc-build",
+      "event_index": 53
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "info",
+    "category": "network",
+    "title": "Beacon-like connection cadence",
+    "description": "Repeated outbound connections at a regular interval were observed from db-002.corp.example",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-05T21:40:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1053",
+      "account": "administrator",
+      "event_index": 54
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "critical",
+    "category": "network",
+    "title": "Large outbound transfer",
+    "description": "Endpoint ws-027.corp.example transferred an unusually large amount of data to 192.0.2.14",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-05T21:22:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1054",
+      "account": "analyst.j",
+      "event_index": 55
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "medium",
+    "category": "network",
+    "title": "New listening service",
+    "description": "A new listener on port 445 was detected on app-09.corp.example",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-05T21:09:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1055",
+      "account": "svc-build",
+      "event_index": 56
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "low",
+    "category": "network",
+    "title": "Port scan detected",
+    "description": "Sequential connection attempts across 72 ports were observed from 198.51.100.27",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-05T20:51:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1056",
+      "account": "administrator",
+      "event_index": 57
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "critical",
+    "category": "network",
+    "title": "Unusual outbound connection",
+    "description": "Host ws-027.corp.example opened an outbound connection to 192.0.2.14:8080 outside its baseline",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-05T20:33:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1057",
+      "account": "analyst.j",
+      "event_index": 58
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "high",
+    "category": "network",
+    "title": "DNS query to suspicious domain",
+    "description": "Resolver observed repeated queries for fileshare.example from app-09.corp.example",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-05T20:15:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1058",
+      "account": "svc-build",
+      "event_index": 59
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "low",
+    "category": "network",
+    "title": "Firewall denied connection",
+    "description": "Firewall denied a connection from 198.51.100.27 to internal service db-002.corp.example:9001",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-05T19:57:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1059",
+      "account": "administrator",
+      "event_index": 60
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "info",
+    "category": "network",
+    "title": "Unexpected east-west traffic",
+    "description": "Workstation ws-027.corp.example contacted an unapproved peer at 192.0.2.14",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-05T19:44:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1060",
+      "account": "analyst.j",
+      "event_index": 61
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "high",
+    "category": "network",
+    "title": "Beacon-like connection cadence",
+    "description": "Repeated outbound connections at a regular interval were observed from app-09.corp.example",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-05T19:26:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1061",
+      "account": "svc-build",
+      "event_index": 62
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "medium",
+    "category": "network",
+    "title": "Large outbound transfer",
+    "description": "Endpoint db-002.corp.example transferred an unusually large amount of data to 198.51.100.27",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-05T19:08:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1062",
+      "account": "administrator",
+      "event_index": 63
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "info",
+    "category": "network",
+    "title": "New listening service",
+    "description": "A new listener on port 8080 was detected on ws-027.corp.example",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-05T18:50:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1063",
+      "account": "analyst.j",
+      "event_index": 64
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "critical",
+    "category": "network",
+    "title": "Port scan detected",
+    "description": "Sequential connection attempts across 80 ports were observed from 203.0.113.18",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-05T18:32:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1064",
+      "account": "svc-build",
+      "event_index": 65
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "medium",
+    "category": "network",
+    "title": "Unusual outbound connection",
+    "description": "Host db-002.corp.example opened an outbound connection to 198.51.100.27:9001 outside its baseline",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-05T18:19:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1065",
+      "account": "administrator",
+      "event_index": 66
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "low",
+    "category": "network",
+    "title": "DNS query to suspicious domain",
+    "description": "Resolver observed repeated queries for fileshare.example from ws-027.corp.example",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-05T18:01:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1066",
+      "account": "analyst.j",
+      "event_index": 67
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "critical",
+    "category": "network",
+    "title": "Firewall denied connection",
+    "description": "Firewall denied a connection from 203.0.113.18 to internal service app-09.corp.example:445",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-05T17:43:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1067",
+      "account": "svc-build",
+      "event_index": 68
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "high",
+    "category": "network",
+    "title": "Unexpected east-west traffic",
+    "description": "Workstation db-002.corp.example contacted an unapproved peer at 198.51.100.27",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-05T17:25:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1068",
+      "account": "administrator",
+      "event_index": 69
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "low",
+    "category": "network",
+    "title": "Beacon-like connection cadence",
+    "description": "Repeated outbound connections at a regular interval were observed from ws-027.corp.example",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-05T17:07:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1069",
+      "account": "analyst.j",
+      "event_index": 70
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "info",
+    "category": "network",
+    "title": "Large outbound transfer",
+    "description": "Endpoint app-09.corp.example transferred an unusually large amount of data to 203.0.113.18",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-05T16:54:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1070",
+      "account": "svc-build",
+      "event_index": 71
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "high",
+    "category": "network",
+    "title": "New listening service",
+    "description": "A new listener on port 9001 was detected on db-002.corp.example",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-05T16:36:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1071",
+      "account": "administrator",
+      "event_index": 72
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "medium",
+    "category": "network",
+    "title": "Port scan detected",
+    "description": "Sequential connection attempts across 88 ports were observed from 192.0.2.14",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-05T16:18:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1072",
+      "account": "analyst.j",
+      "event_index": 73
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "info",
+    "category": "network",
+    "title": "Unusual outbound connection",
+    "description": "Host app-09.corp.example opened an outbound connection to 203.0.113.18:445 outside its baseline",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-05T16:00:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1073",
+      "account": "svc-build",
+      "event_index": 74
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "critical",
+    "category": "network",
+    "title": "DNS query to suspicious domain",
+    "description": "Resolver observed repeated queries for fileshare.example from db-002.corp.example",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-05T15:42:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1074",
+      "account": "administrator",
+      "event_index": 75
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "medium",
+    "category": "network",
+    "title": "Firewall denied connection",
+    "description": "Firewall denied a connection from 192.0.2.14 to internal service ws-027.corp.example:8080",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-05T15:29:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1075",
+      "account": "analyst.j",
+      "event_index": 76
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "low",
+    "category": "network",
+    "title": "Unexpected east-west traffic",
+    "description": "Workstation app-09.corp.example contacted an unapproved peer at 203.0.113.18",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-05T15:11:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1076",
+      "account": "svc-build",
+      "event_index": 77
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "critical",
+    "category": "network",
+    "title": "Beacon-like connection cadence",
+    "description": "Repeated outbound connections at a regular interval were observed from db-002.corp.example",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-05T14:53:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1077",
+      "account": "administrator",
+      "event_index": 78
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "high",
+    "category": "network",
+    "title": "Large outbound transfer",
+    "description": "Endpoint ws-027.corp.example transferred an unusually large amount of data to 192.0.2.14",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-05T14:35:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1078",
+      "account": "analyst.j",
+      "event_index": 79
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "low",
+    "category": "network",
+    "title": "New listening service",
+    "description": "A new listener on port 445 was detected on app-09.corp.example",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-05T14:17:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1079",
+      "account": "svc-build",
+      "event_index": 80
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "info",
+    "category": "malware",
+    "title": "Suspicious file execution",
+    "description": "Endpoint protection flagged a file launched from a temporary directory on db-002.corp.example",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-05T14:04:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1080",
+      "account": "administrator",
+      "event_index": 81
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "high",
+    "category": "malware",
+    "title": "Known malware hash detected",
+    "description": "A file matching a simulated threat-intelligence hash was quarantined on ws-027.corp.example",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-05T13:46:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1081",
+      "account": "analyst.j",
+      "event_index": 82
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "medium",
+    "category": "malware",
+    "title": "Encoded command execution",
+    "description": "A process on app-09.corp.example launched a command containing an encoded argument",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-05T13:28:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1082",
+      "account": "svc-build",
+      "event_index": 83
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "info",
+    "category": "malware",
+    "title": "Persistence mechanism created",
+    "description": "A new autorun entry was created by an untrusted process on db-002.corp.example",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-05T13:10:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1083",
+      "account": "administrator",
+      "event_index": 84
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "critical",
+    "category": "malware",
+    "title": "Suspicious child process",
+    "description": "A document reader spawned a script interpreter on ws-027.corp.example",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-05T12:52:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1084",
+      "account": "analyst.j",
+      "event_index": 85
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "medium",
+    "category": "malware",
+    "title": "Quarantine action completed",
+    "description": "A suspicious executable was isolated before it could establish persistence on app-09.corp.example",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-05T12:39:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1085",
+      "account": "svc-build",
+      "event_index": 86
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "low",
+    "category": "malware",
+    "title": "Suspicious file execution",
+    "description": "Endpoint protection flagged a file launched from a temporary directory on db-002.corp.example",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-05T12:21:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1086",
+      "account": "administrator",
+      "event_index": 87
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "critical",
+    "category": "malware",
+    "title": "Known malware hash detected",
+    "description": "A file matching a simulated threat-intelligence hash was quarantined on ws-027.corp.example",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-05T12:03:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1087",
+      "account": "analyst.j",
+      "event_index": 88
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "high",
+    "category": "malware",
+    "title": "Encoded command execution",
+    "description": "A process on app-09.corp.example launched a command containing an encoded argument",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-05T11:45:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1088",
+      "account": "svc-build",
+      "event_index": 89
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "low",
+    "category": "malware",
+    "title": "Persistence mechanism created",
+    "description": "A new autorun entry was created by an untrusted process on db-002.corp.example",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-05T11:27:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1089",
+      "account": "administrator",
+      "event_index": 90
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "info",
+    "category": "malware",
+    "title": "Suspicious child process",
+    "description": "A document reader spawned a script interpreter on ws-027.corp.example",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-05T11:14:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1090",
+      "account": "analyst.j",
+      "event_index": 91
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "high",
+    "category": "malware",
+    "title": "Quarantine action completed",
+    "description": "A suspicious executable was isolated before it could establish persistence on app-09.corp.example",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-05T10:56:35.297Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1091",
+      "account": "svc-build",
+      "event_index": 92
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "medium",
+    "category": "malware",
+    "title": "Suspicious file execution",
+    "description": "Endpoint protection flagged a file launched from a temporary directory on db-002.corp.example",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-05T10:38:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1092",
+      "account": "administrator",
+      "event_index": 93
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "info",
+    "category": "malware",
+    "title": "Known malware hash detected",
+    "description": "A file matching a simulated threat-intelligence hash was quarantined on ws-027.corp.example",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-05T10:20:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1093",
+      "account": "analyst.j",
+      "event_index": 94
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "critical",
+    "category": "malware",
+    "title": "Encoded command execution",
+    "description": "A process on app-09.corp.example launched a command containing an encoded argument",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-05T10:02:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1094",
+      "account": "svc-build",
+      "event_index": 95
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "medium",
+    "category": "malware",
+    "title": "Persistence mechanism created",
+    "description": "A new autorun entry was created by an untrusted process on db-002.corp.example",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-05T09:49:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1095",
+      "account": "administrator",
+      "event_index": 96
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "low",
+    "category": "malware",
+    "title": "Suspicious child process",
+    "description": "A document reader spawned a script interpreter on ws-027.corp.example",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-05T09:31:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1096",
+      "account": "analyst.j",
+      "event_index": 97
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "critical",
+    "category": "malware",
+    "title": "Quarantine action completed",
+    "description": "A suspicious executable was isolated before it could establish persistence on app-09.corp.example",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-05T09:13:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1097",
+      "account": "svc-build",
+      "event_index": 98
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "high",
+    "category": "malware",
+    "title": "Suspicious file execution",
+    "description": "Endpoint protection flagged a file launched from a temporary directory on db-002.corp.example",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-05T08:55:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1098",
+      "account": "administrator",
+      "event_index": 99
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "low",
+    "category": "malware",
+    "title": "Known malware hash detected",
+    "description": "A file matching a simulated threat-intelligence hash was quarantined on ws-027.corp.example",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-05T08:37:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1099",
+      "account": "analyst.j",
+      "event_index": 100
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "info",
+    "category": "malware",
+    "title": "Encoded command execution",
+    "description": "A process on app-09.corp.example launched a command containing an encoded argument",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-05T08:24:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1100",
+      "account": "svc-build",
+      "event_index": 101
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "high",
+    "category": "malware",
+    "title": "Persistence mechanism created",
+    "description": "A new autorun entry was created by an untrusted process on db-002.corp.example",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-05T08:06:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1101",
+      "account": "administrator",
+      "event_index": 102
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "medium",
+    "category": "malware",
+    "title": "Suspicious child process",
+    "description": "A document reader spawned a script interpreter on ws-027.corp.example",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-05T07:48:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1102",
+      "account": "analyst.j",
+      "event_index": 103
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "info",
+    "category": "malware",
+    "title": "Quarantine action completed",
+    "description": "A suspicious executable was isolated before it could establish persistence on app-09.corp.example",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-05T07:30:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1103",
+      "account": "svc-build",
+      "event_index": 104
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "critical",
+    "category": "malware",
+    "title": "Suspicious file execution",
+    "description": "Endpoint protection flagged a file launched from a temporary directory on db-002.corp.example",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-05T07:12:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1104",
+      "account": "administrator",
+      "event_index": 105
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "medium",
+    "category": "malware",
+    "title": "Known malware hash detected",
+    "description": "A file matching a simulated threat-intelligence hash was quarantined on ws-027.corp.example",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-05T06:59:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1105",
+      "account": "analyst.j",
+      "event_index": 106
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "low",
+    "category": "malware",
+    "title": "Encoded command execution",
+    "description": "A process on app-09.corp.example launched a command containing an encoded argument",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-05T06:41:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1106",
+      "account": "svc-build",
+      "event_index": 107
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "critical",
+    "category": "malware",
+    "title": "Persistence mechanism created",
+    "description": "A new autorun entry was created by an untrusted process on db-002.corp.example",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-05T06:23:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1107",
+      "account": "administrator",
+      "event_index": 108
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "high",
+    "category": "malware",
+    "title": "Suspicious child process",
+    "description": "A document reader spawned a script interpreter on ws-027.corp.example",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-05T06:05:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1108",
+      "account": "analyst.j",
+      "event_index": 109
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "low",
+    "category": "malware",
+    "title": "Quarantine action completed",
+    "description": "A suspicious executable was isolated before it could establish persistence on app-09.corp.example",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-05T05:47:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1109",
+      "account": "svc-build",
+      "event_index": 110
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "info",
+    "category": "policy",
+    "title": "Firewall rule violation",
+    "description": "Traffic from 198.51.100.27 matched a restricted egress policy on db-002.corp.example",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-05T05:34:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1110",
+      "account": "administrator",
+      "event_index": 111
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "high",
+    "category": "policy",
+    "title": "Unauthorized access attempt",
+    "description": "An account without the required role attempted to access a restricted resource",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-05T05:16:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1111",
+      "account": "analyst.j",
+      "event_index": 112
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "medium",
+    "category": "policy",
+    "title": "USB storage policy violation",
+    "description": "Removable storage was mounted on app-09.corp.example contrary to endpoint policy",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-05T04:58:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1112",
+      "account": "svc-build",
+      "event_index": 113
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "info",
+    "category": "policy",
+    "title": "Sensitive file access denied",
+    "description": "A process attempted to read a protected configuration file on db-002.corp.example",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-05T04:40:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1113",
+      "account": "administrator",
+      "event_index": 114
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "critical",
+    "category": "policy",
+    "title": "Unapproved software detected",
+    "description": "Inventory found an unapproved remote administration tool on ws-027.corp.example",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-05T04:22:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1114",
+      "account": "analyst.j",
+      "event_index": 115
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "medium",
+    "category": "policy",
+    "title": "Security control disabled",
+    "description": "A local security setting changed outside the approved maintenance window",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-05T04:09:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1115",
+      "account": "svc-build",
+      "event_index": 116
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "low",
+    "category": "policy",
+    "title": "Firewall rule violation",
+    "description": "Traffic from 198.51.100.27 matched a restricted egress policy on db-002.corp.example",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-05T03:51:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1116",
+      "account": "administrator",
+      "event_index": 117
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "critical",
+    "category": "policy",
+    "title": "Unauthorized access attempt",
+    "description": "An account without the required role attempted to access a restricted resource",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-05T03:33:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1117",
+      "account": "analyst.j",
+      "event_index": 118
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "high",
+    "category": "policy",
+    "title": "USB storage policy violation",
+    "description": "Removable storage was mounted on app-09.corp.example contrary to endpoint policy",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-05T03:15:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1118",
+      "account": "svc-build",
+      "event_index": 119
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "low",
+    "category": "policy",
+    "title": "Sensitive file access denied",
+    "description": "A process attempted to read a protected configuration file on db-002.corp.example",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-05T02:57:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1119",
+      "account": "administrator",
+      "event_index": 120
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "info",
+    "category": "policy",
+    "title": "Unapproved software detected",
+    "description": "Inventory found an unapproved remote administration tool on ws-027.corp.example",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-05T02:44:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1120",
+      "account": "analyst.j",
+      "event_index": 121
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "high",
+    "category": "policy",
+    "title": "Security control disabled",
+    "description": "A local security setting changed outside the approved maintenance window",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-05T02:26:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1121",
+      "account": "svc-build",
+      "event_index": 122
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "medium",
+    "category": "policy",
+    "title": "Firewall rule violation",
+    "description": "Traffic from 198.51.100.27 matched a restricted egress policy on db-002.corp.example",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-05T02:08:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1122",
+      "account": "administrator",
+      "event_index": 123
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "info",
+    "category": "policy",
+    "title": "Unauthorized access attempt",
+    "description": "An account without the required role attempted to access a restricted resource",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-05T01:50:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1123",
+      "account": "analyst.j",
+      "event_index": 124
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "critical",
+    "category": "policy",
+    "title": "USB storage policy violation",
+    "description": "Removable storage was mounted on app-09.corp.example contrary to endpoint policy",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-05T01:32:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1124",
+      "account": "svc-build",
+      "event_index": 125
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "medium",
+    "category": "policy",
+    "title": "Sensitive file access denied",
+    "description": "A process attempted to read a protected configuration file on db-002.corp.example",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-05T01:19:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1125",
+      "account": "administrator",
+      "event_index": 126
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "low",
+    "category": "policy",
+    "title": "Unapproved software detected",
+    "description": "Inventory found an unapproved remote administration tool on ws-027.corp.example",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-05T01:01:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1126",
+      "account": "analyst.j",
+      "event_index": 127
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "critical",
+    "category": "policy",
+    "title": "Security control disabled",
+    "description": "A local security setting changed outside the approved maintenance window",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-05T00:43:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1127",
+      "account": "svc-build",
+      "event_index": 128
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "high",
+    "category": "policy",
+    "title": "Firewall rule violation",
+    "description": "Traffic from 198.51.100.27 matched a restricted egress policy on db-002.corp.example",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-05T00:25:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1128",
+      "account": "administrator",
+      "event_index": 129
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "low",
+    "category": "policy",
+    "title": "Unauthorized access attempt",
+    "description": "An account without the required role attempted to access a restricted resource",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-05T00:07:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1129",
+      "account": "analyst.j",
+      "event_index": 130
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "info",
+    "category": "policy",
+    "title": "USB storage policy violation",
+    "description": "Removable storage was mounted on app-09.corp.example contrary to endpoint policy",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-04T23:54:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1130",
+      "account": "svc-build",
+      "event_index": 131
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "high",
+    "category": "policy",
+    "title": "Sensitive file access denied",
+    "description": "A process attempted to read a protected configuration file on db-002.corp.example",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-04T23:36:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1131",
+      "account": "administrator",
+      "event_index": 132
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "medium",
+    "category": "policy",
+    "title": "Unapproved software detected",
+    "description": "Inventory found an unapproved remote administration tool on ws-027.corp.example",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-04T23:18:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1132",
+      "account": "analyst.j",
+      "event_index": 133
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "info",
+    "category": "policy",
+    "title": "Security control disabled",
+    "description": "A local security setting changed outside the approved maintenance window",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-04T23:00:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1133",
+      "account": "svc-build",
+      "event_index": 134
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "critical",
+    "category": "policy",
+    "title": "Firewall rule violation",
+    "description": "Traffic from 198.51.100.27 matched a restricted egress policy on db-002.corp.example",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-04T22:42:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1134",
+      "account": "administrator",
+      "event_index": 135
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "medium",
+    "category": "policy",
+    "title": "Unauthorized access attempt",
+    "description": "An account without the required role attempted to access a restricted resource",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-04T22:29:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1135",
+      "account": "analyst.j",
+      "event_index": 136
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "low",
+    "category": "policy",
+    "title": "USB storage policy violation",
+    "description": "Removable storage was mounted on app-09.corp.example contrary to endpoint policy",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-04T22:11:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1136",
+      "account": "svc-build",
+      "event_index": 137
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "critical",
+    "category": "policy",
+    "title": "Sensitive file access denied",
+    "description": "A process attempted to read a protected configuration file on db-002.corp.example",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-04T21:53:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1137",
+      "account": "administrator",
+      "event_index": 138
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "high",
+    "category": "policy",
+    "title": "Unapproved software detected",
+    "description": "Inventory found an unapproved remote administration tool on ws-027.corp.example",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-04T21:35:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1138",
+      "account": "analyst.j",
+      "event_index": 139
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "low",
+    "category": "policy",
+    "title": "Security control disabled",
+    "description": "A local security setting changed outside the approved maintenance window",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-04T21:17:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1139",
+      "account": "svc-build",
+      "event_index": 140
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "info",
+    "category": "system",
+    "title": "Privilege escalation alert",
+    "description": "A process attempted to obtain elevated privileges on db-002.corp.example",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-04T21:04:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1140",
+      "account": "administrator",
+      "event_index": 141
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "high",
+    "category": "system",
+    "title": "Service crash detected",
+    "description": "The endpoint agent recorded an unexpected service termination on ws-027.corp.example",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-04T20:46:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1141",
+      "account": "analyst.j",
+      "event_index": 142
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "medium",
+    "category": "system",
+    "title": "System configuration changed",
+    "description": "A protected system configuration changed on app-09.corp.example",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-04T20:28:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1142",
+      "account": "svc-build",
+      "event_index": 143
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "info",
+    "category": "system",
+    "title": "New scheduled task created",
+    "description": "A scheduled task was registered by an unexpected parent process on db-002.corp.example",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-04T20:10:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1143",
+      "account": "administrator",
+      "event_index": 144
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "critical",
+    "category": "system",
+    "title": "Audit logging interrupted",
+    "description": "Security event forwarding paused for ws-027.corp.example and resumed after 15 minutes",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-04T19:52:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1144",
+      "account": "analyst.j",
+      "event_index": 145
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "medium",
+    "category": "system",
+    "title": "Unusual process injection behavior",
+    "description": "A process on app-09.corp.example attempted to write into another process memory space",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-04T19:39:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1145",
+      "account": "svc-build",
+      "event_index": 146
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "low",
+    "category": "system",
+    "title": "Privilege escalation alert",
+    "description": "A process attempted to obtain elevated privileges on db-002.corp.example",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-04T19:21:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1146",
+      "account": "administrator",
+      "event_index": 147
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "critical",
+    "category": "system",
+    "title": "Service crash detected",
+    "description": "The endpoint agent recorded an unexpected service termination on ws-027.corp.example",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-04T19:03:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1147",
+      "account": "analyst.j",
+      "event_index": 148
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "high",
+    "category": "system",
+    "title": "System configuration changed",
+    "description": "A protected system configuration changed on app-09.corp.example",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-04T18:45:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1148",
+      "account": "svc-build",
+      "event_index": 149
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "low",
+    "category": "system",
+    "title": "New scheduled task created",
+    "description": "A scheduled task was registered by an unexpected parent process on db-002.corp.example",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-04T18:27:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1149",
+      "account": "administrator",
+      "event_index": 150
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "info",
+    "category": "system",
+    "title": "Audit logging interrupted",
+    "description": "Security event forwarding paused for ws-027.corp.example and resumed after 21 minutes",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-04T18:14:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1150",
+      "account": "analyst.j",
+      "event_index": 151
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "high",
+    "category": "system",
+    "title": "Unusual process injection behavior",
+    "description": "A process on app-09.corp.example attempted to write into another process memory space",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-04T17:56:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1151",
+      "account": "svc-build",
+      "event_index": 152
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "medium",
+    "category": "system",
+    "title": "Privilege escalation alert",
+    "description": "A process attempted to obtain elevated privileges on db-002.corp.example",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-04T17:38:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1152",
+      "account": "administrator",
+      "event_index": 153
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "info",
+    "category": "system",
+    "title": "Service crash detected",
+    "description": "The endpoint agent recorded an unexpected service termination on ws-027.corp.example",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-04T17:20:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1153",
+      "account": "analyst.j",
+      "event_index": 154
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "critical",
+    "category": "system",
+    "title": "System configuration changed",
+    "description": "A protected system configuration changed on app-09.corp.example",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-04T17:02:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1154",
+      "account": "svc-build",
+      "event_index": 155
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "medium",
+    "category": "system",
+    "title": "New scheduled task created",
+    "description": "A scheduled task was registered by an unexpected parent process on db-002.corp.example",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-04T16:49:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1155",
+      "account": "administrator",
+      "event_index": 156
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "low",
+    "category": "system",
+    "title": "Audit logging interrupted",
+    "description": "Security event forwarding paused for ws-027.corp.example and resumed after 5 minutes",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-04T16:31:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1156",
+      "account": "analyst.j",
+      "event_index": 157
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "critical",
+    "category": "system",
+    "title": "Unusual process injection behavior",
+    "description": "A process on app-09.corp.example attempted to write into another process memory space",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-04T16:13:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1157",
+      "account": "svc-build",
+      "event_index": 158
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "high",
+    "category": "system",
+    "title": "Privilege escalation alert",
+    "description": "A process attempted to obtain elevated privileges on db-002.corp.example",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-04T15:55:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1158",
+      "account": "administrator",
+      "event_index": 159
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "low",
+    "category": "system",
+    "title": "Service crash detected",
+    "description": "The endpoint agent recorded an unexpected service termination on ws-027.corp.example",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-04T15:37:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1159",
+      "account": "analyst.j",
+      "event_index": 160
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "info",
+    "category": "system",
+    "title": "System configuration changed",
+    "description": "A protected system configuration changed on app-09.corp.example",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-04T15:24:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1160",
+      "account": "svc-build",
+      "event_index": 161
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "high",
+    "category": "system",
+    "title": "New scheduled task created",
+    "description": "A scheduled task was registered by an unexpected parent process on db-002.corp.example",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-04T15:06:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1161",
+      "account": "administrator",
+      "event_index": 162
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "medium",
+    "category": "system",
+    "title": "Audit logging interrupted",
+    "description": "Security event forwarding paused for ws-027.corp.example and resumed after 11 minutes",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-04T14:48:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1162",
+      "account": "analyst.j",
+      "event_index": 163
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "info",
+    "category": "system",
+    "title": "Unusual process injection behavior",
+    "description": "A process on app-09.corp.example attempted to write into another process memory space",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-04T14:30:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1163",
+      "account": "svc-build",
+      "event_index": 164
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "critical",
+    "category": "system",
+    "title": "Privilege escalation alert",
+    "description": "A process attempted to obtain elevated privileges on db-002.corp.example",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-04T14:12:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1164",
+      "account": "administrator",
+      "event_index": 165
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "medium",
+    "category": "system",
+    "title": "Service crash detected",
+    "description": "The endpoint agent recorded an unexpected service termination on ws-027.corp.example",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-04T13:59:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1165",
+      "account": "analyst.j",
+      "event_index": 166
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "low",
+    "category": "system",
+    "title": "System configuration changed",
+    "description": "A protected system configuration changed on app-09.corp.example",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-04T13:41:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1166",
+      "account": "svc-build",
+      "event_index": 167
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "critical",
+    "category": "system",
+    "title": "New scheduled task created",
+    "description": "A scheduled task was registered by an unexpected parent process on db-002.corp.example",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-04T13:23:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1167",
+      "account": "administrator",
+      "event_index": 168
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "high",
+    "category": "system",
+    "title": "Audit logging interrupted",
+    "description": "Security event forwarding paused for ws-027.corp.example and resumed after 17 minutes",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-04T13:05:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1168",
+      "account": "analyst.j",
+      "event_index": 169
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "low",
+    "category": "system",
+    "title": "Unusual process injection behavior",
+    "description": "A process on app-09.corp.example attempted to write into another process memory space",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-04T12:47:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1169",
+      "account": "svc-build",
+      "event_index": 170
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "info",
+    "category": "application",
+    "title": "SQL injection pattern blocked",
+    "description": "Web application firewall blocked a SQL injection pattern from 198.51.100.27 on /admin/export",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-04T12:34:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1170",
+      "account": "administrator",
+      "event_index": 171
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "high",
+    "category": "application",
+    "title": "Cross-site scripting attempt blocked",
+    "description": "A request containing a script injection payload was blocked on /api/v1/search",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-04T12:16:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1171",
+      "account": "analyst.j",
+      "event_index": 172
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "medium",
+    "category": "application",
+    "title": "Abnormal API usage",
+    "description": "API client exceeded its normal request rate on service app-09.corp.example",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-04T11:58:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1172",
+      "account": "svc-build",
+      "event_index": 173
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "info",
+    "category": "application",
+    "title": "Authentication token replay suspected",
+    "description": "An application session token was presented from two network locations",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-04T11:40:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1173",
+      "account": "administrator",
+      "event_index": 174
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "critical",
+    "category": "application",
+    "title": "Unexpected admin endpoint access",
+    "description": "A request to an administrative route was denied for an unprivileged account",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-04T11:22:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1174",
+      "account": "analyst.j",
+      "event_index": 175
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "medium",
+    "category": "application",
+    "title": "Application error spike",
+    "description": "A burst of malformed requests caused elevated 4xx responses on app-09.corp.example",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-04T11:09:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1175",
+      "account": "svc-build",
+      "event_index": 176
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "low",
+    "category": "application",
+    "title": "SQL injection pattern blocked",
+    "description": "Web application firewall blocked a SQL injection pattern from 198.51.100.27 on /admin/export",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-04T10:51:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1176",
+      "account": "administrator",
+      "event_index": 177
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "critical",
+    "category": "application",
+    "title": "Cross-site scripting attempt blocked",
+    "description": "A request containing a script injection payload was blocked on /api/v1/search",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-04T10:33:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1177",
+      "account": "analyst.j",
+      "event_index": 178
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "high",
+    "category": "application",
+    "title": "Abnormal API usage",
+    "description": "API client exceeded its normal request rate on service app-09.corp.example",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-04T10:15:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1178",
+      "account": "svc-build",
+      "event_index": 179
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "low",
+    "category": "application",
+    "title": "Authentication token replay suspected",
+    "description": "An application session token was presented from two network locations",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-04T09:57:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1179",
+      "account": "administrator",
+      "event_index": 180
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "info",
+    "category": "application",
+    "title": "Unexpected admin endpoint access",
+    "description": "A request to an administrative route was denied for an unprivileged account",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-04T09:44:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1180",
+      "account": "analyst.j",
+      "event_index": 181
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "high",
+    "category": "application",
+    "title": "Application error spike",
+    "description": "A burst of malformed requests caused elevated 4xx responses on app-09.corp.example",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-04T09:26:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1181",
+      "account": "svc-build",
+      "event_index": 182
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "medium",
+    "category": "application",
+    "title": "SQL injection pattern blocked",
+    "description": "Web application firewall blocked a SQL injection pattern from 198.51.100.27 on /admin/export",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-04T09:08:35.298Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1182",
+      "account": "administrator",
+      "event_index": 183
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "info",
+    "category": "application",
+    "title": "Cross-site scripting attempt blocked",
+    "description": "A request containing a script injection payload was blocked on /api/v1/search",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-04T08:50:35.299Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1183",
+      "account": "analyst.j",
+      "event_index": 184
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "critical",
+    "category": "application",
+    "title": "Abnormal API usage",
+    "description": "API client exceeded its normal request rate on service app-09.corp.example",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-04T08:32:35.299Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1184",
+      "account": "svc-build",
+      "event_index": 185
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "medium",
+    "category": "application",
+    "title": "Authentication token replay suspected",
+    "description": "An application session token was presented from two network locations",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-04T08:19:35.299Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1185",
+      "account": "administrator",
+      "event_index": 186
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "low",
+    "category": "application",
+    "title": "Unexpected admin endpoint access",
+    "description": "A request to an administrative route was denied for an unprivileged account",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-04T08:01:35.299Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1186",
+      "account": "analyst.j",
+      "event_index": 187
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "critical",
+    "category": "application",
+    "title": "Application error spike",
+    "description": "A burst of malformed requests caused elevated 4xx responses on app-09.corp.example",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-04T07:43:35.299Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1187",
+      "account": "svc-build",
+      "event_index": 188
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "high",
+    "category": "application",
+    "title": "SQL injection pattern blocked",
+    "description": "Web application firewall blocked a SQL injection pattern from 198.51.100.27 on /admin/export",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-04T07:25:35.299Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1188",
+      "account": "administrator",
+      "event_index": 189
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "low",
+    "category": "application",
+    "title": "Cross-site scripting attempt blocked",
+    "description": "A request containing a script injection payload was blocked on /api/v1/search",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-04T07:07:35.299Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1189",
+      "account": "analyst.j",
+      "event_index": 190
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "info",
+    "category": "application",
+    "title": "Abnormal API usage",
+    "description": "API client exceeded its normal request rate on service app-09.corp.example",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-04T06:54:35.299Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1190",
+      "account": "svc-build",
+      "event_index": 191
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "high",
+    "category": "application",
+    "title": "Authentication token replay suspected",
+    "description": "An application session token was presented from two network locations",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-04T06:36:35.299Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1191",
+      "account": "administrator",
+      "event_index": 192
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "medium",
+    "category": "application",
+    "title": "Unexpected admin endpoint access",
+    "description": "A request to an administrative route was denied for an unprivileged account",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-04T06:18:35.299Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1192",
+      "account": "analyst.j",
+      "event_index": 193
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "info",
+    "category": "application",
+    "title": "Application error spike",
+    "description": "A burst of malformed requests caused elevated 4xx responses on app-09.corp.example",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-04T06:00:35.299Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1193",
+      "account": "svc-build",
+      "event_index": 194
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "critical",
+    "category": "application",
+    "title": "SQL injection pattern blocked",
+    "description": "Web application firewall blocked a SQL injection pattern from 198.51.100.27 on /admin/export",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-04T05:42:35.299Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1194",
+      "account": "administrator",
+      "event_index": 195
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "medium",
+    "category": "application",
+    "title": "Cross-site scripting attempt blocked",
+    "description": "A request containing a script injection payload was blocked on /api/v1/search",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-04T05:29:35.299Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1195",
+      "account": "analyst.j",
+      "event_index": 196
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "low",
+    "category": "application",
+    "title": "Abnormal API usage",
+    "description": "API client exceeded its normal request rate on service app-09.corp.example",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-04T05:11:35.299Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1196",
+      "account": "svc-build",
+      "event_index": 197
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "critical",
+    "category": "application",
+    "title": "Authentication token replay suspected",
+    "description": "An application session token was presented from two network locations",
+    "source_ip": "198.51.100.27",
+    "dest_ip": "203.0.113.18",
+    "hostname": "db-002.corp.example",
+    "event_time": "2026-11-04T04:53:35.299Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1197",
+      "account": "administrator",
+      "event_index": 198
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "high",
+    "category": "application",
+    "title": "Unexpected admin endpoint access",
+    "description": "A request to an administrative route was denied for an unprivileged account",
+    "source_ip": "192.0.2.14",
+    "dest_ip": "198.51.100.27",
+    "hostname": "ws-027.corp.example",
+    "event_time": "2026-11-04T04:35:35.299Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1198",
+      "account": "analyst.j",
+      "event_index": 199
+    }
+  },
+  {
+    "source": "sample_dataset",
+    "severity": "low",
+    "category": "application",
+    "title": "Application error spike",
+    "description": "A burst of malformed requests caused elevated 4xx responses on app-09.corp.example",
+    "source_ip": "203.0.113.18",
+    "dest_ip": "192.0.2.14",
+    "hostname": "app-09.corp.example",
+    "event_time": "2026-11-04T04:17:35.299Z",
+    "raw_data": {
+      "sample": true,
+      "event_code": "SB-1199",
+      "account": "svc-build",
+      "event_index": 200
+    }
+  }
+]
