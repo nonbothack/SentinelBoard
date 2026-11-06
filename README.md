@@ -2,11 +2,11 @@
 
 **A full-stack SOC analyst workbench for organizing security events, investigating indicators of compromise, and tracking incidents.**
 
-[![Live demo](https://img.shields.io/badge/demo-live-2563eb)](https://sentinelboard-six.vercel.app)
+[![Live app](https://img.shields.io/badge/app-live-2563eb)](https://sentinelboard-six.vercel.app)
 
 SentinelBoard is a portfolio project built around real analyst workflows. It stores workspace data in Supabase, applies row-level security, and enriches indicators through server-side threat-intelligence integrations.
 
-**Live demo:** [sentinelboard-six.vercel.app](https://sentinelboard-six.vercel.app)
+**Live app:** [sentinelboard-six.vercel.app](https://sentinelboard-six.vercel.app)
 
 > This README describes the current MVP. The Settings route is a placeholder, and scan files are results to upload and review; SentinelBoard does not launch scanners.
 
@@ -24,7 +24,7 @@ Sources: [CISA Known Exploited Vulnerabilities catalog](https://www.cisa.gov/kno
 
 - **Dashboard:** workspace counts and recent events and incidents, queried from the signed-in user's data.
 - **IOC enrichment:** validate and submit IP addresses, domains, URLs, MD5 hashes, and SHA-256 hashes; view cached results and provider summaries from VirusTotal, AbuseIPDB, and AlienVault OTX where supported.
-- **Security event feed:** import event JSON, filter events, inspect details, tag events with MITRE ATT&CK techniques, and receive new events through Supabase Realtime. Bundled events are marked as sample data.
+- **Security event feed:** import event JSON, filter events, inspect details, tag events with MITRE ATT&CK techniques, and receive new events through Supabase Realtime. Bundled development events are labeled as fictional telemetry; imported and live workspace events retain their own provenance.
 - **ATT&CK map:** search the bundled Enterprise ATT&CK technique data and review event tags.
 - **Scan results:** upload Nuclei JSON/JSONL or Nmap XML results up to 10 MB. Files are parsed in the browser; the source file is stored in a private Supabase Storage bucket.
 - **Incident tracker:** create incidents, transition their status, attach events and IOCs, review an activity timeline, and download a Markdown report.
@@ -84,10 +84,9 @@ The browser uses the Supabase anon key and a signed-in user's session. RLS limit
 git clone https://github.com/nonbothack/SentinelBoard.git
 cd SentinelBoard
 npm install
-cp .env.example .env.local
 ```
 
-Set the two frontend values in `.env.local`, then start Vite:
+Create `.env.local` with the two frontend values, then start Vite:
 
 ```dotenv
 VITE_SUPABASE_URL=https://YOUR_PROJECT_REF.supabase.co
@@ -121,7 +120,7 @@ The app reads and writes the following Supabase tables. User-owned rows are prot
 | Table | Purpose |
 | --- | --- |
 | `profiles` | Application profile linked to Supabase Auth |
-| `events` | Normalized security events and sample-data marker |
+| `events` | Normalized security events and provenance marker |
 | `iocs` | User-submitted indicators |
 | `ioc_enrichments` | Per-provider status, summary, and stored response |
 | `attack_techniques` | Bundled Enterprise ATT&CK reference data |
@@ -149,7 +148,7 @@ Each applicable provider is queried independently, so a provider error or rate l
 - Enable and maintain RLS on user-owned tables; frontend access uses the Supabase anon key and authenticated session.
 - Keep VirusTotal, AbuseIPDB, and OTX keys in Supabase Edge Function secrets. Never expose a service-role key or provider key in browser code.
 - Scan files are limited to 10 MB, parsed in the browser, and stored in a private bucket with a user-scoped storage path.
-- Treat imported event and scan content as untrusted input. Avoid importing real sensitive telemetry into a public demo account.
+- Treat imported event and scan content as untrusted input. Avoid importing sensitive telemetry into the publicly accessible deployment.
 - Configure Supabase Auth Site URL and redirect allowlist for the production domain and local development origins.
 
 ## Known limitations
