@@ -101,13 +101,17 @@ Vite serves the app at `http://localhost:5173`. Add that URL to Supabase Auth's 
 
 ### Supabase setup notes
 
-The deployed project was provisioned with the base schema and storage configuration during SB-002. This repository currently contains the `incident_activity` migration and ATT&CK seed data, but does not contain a baseline migration for all original tables. A fresh Supabase project therefore needs that baseline schema and policies provisioned before the app can be used; running the frontend setup commands alone does not create them.
+The full database schema is version-controlled under `supabase/migrations/`:
+- `20261106000000_initial_schema.sql`: Provisions all core tables (`profiles`, `events`, `attack_techniques`, `event_techniques`, `iocs`, `ioc_enrichments`, `scan_uploads`, `scan_findings`, `incidents`, `incident_iocs`, `incident_events`), automated timestamp triggers, and Row Level Security (RLS) policies.
+- `20261106190000_incident_activity.sql`: Provisions the incident investigation timeline and activity audit log.
+- `supabase/seed/attack_techniques.sql`: Seeds 706 MITRE ATT&CK Enterprise techniques.
 
-To link the Supabase CLI to a project and deploy the enrichment function:
+To link the Supabase CLI to a project, apply migrations, and deploy the enrichment function:
 
 ```bash
 npx supabase@latest login
 npx supabase@latest link --project-ref YOUR_PROJECT_REF
+npx supabase@latest db push
 npx supabase@latest functions deploy enrich-ioc
 ```
 
@@ -151,15 +155,16 @@ Each applicable provider is queried independently, so a provider error or rate l
 - Treat imported event and scan content as untrusted input. Avoid importing sensitive telemetry into the publicly accessible deployment.
 - Configure Supabase Auth Site URL and redirect allowlist for the production domain and local development origins.
 
-## Known limitations
+## Known limitations & roadmap
 
 - The Settings page is an MVP-scope placeholder.
-- Scan visualization accepts existing Nuclei or Nmap output; it does not run scans.
-- Event JSON import is implemented; CSV import and webhook ingestion are not part of this MVP.
-- The live feed subscribes to event inserts; it is not a general-purpose streaming pipeline.
+- Scan visualization accepts existing Nuclei or Nmap output; it does not launch scanners.
+- Event JSON import is implemented; CSV import and automated webhook ingestion are scheduled for v1.1.
+- The live feed subscribes to event inserts; it is not a general-purpose distributed streaming pipeline.
 - IOC verdicts reflect provider data available at query time, can be cached, and can be incomplete or rate-limited.
-- The initial database schema is not tracked as a baseline migration in this repository, which limits clean-room backend setup.
 - No AI-generated analysis or automated remediation is included.
+
+See [IMPROVEMENTS.md](IMPROVEMENTS.md) for the detailed architectural roadmap, planned features (CISA KEV live feeds, Sigma rule generator, attack graph), and interview talking points.
 
 ## Author
 
