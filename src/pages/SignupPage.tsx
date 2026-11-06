@@ -24,7 +24,10 @@ export function SignupPage() {
       const { data, error: authError } = await supabase.auth.signUp({
         email: email.trim(),
         password,
-        options: { data: { display_name: displayName.trim() } },
+        options: {
+          data: { display_name: displayName.trim() },
+          emailRedirectTo: window.location.origin,
+        },
       })
       if (authError) {
         setError('Account creation failed. Check your details and try again.')
@@ -34,7 +37,7 @@ export function SignupPage() {
         navigate('/dashboard', { replace: true })
         return
       }
-      setMessage('Your account was created. Check your email for the confirmation link before signing in.')
+      setMessage('Check your email to verify your address before signing in. The confirmation link will return you to SentinelBoard.')
     } catch {
       setError('Account creation failed. Check your details and try again.')
     } finally {
@@ -56,7 +59,9 @@ export function SignupPage() {
         {error && <div className="mt-4 border-l-4 border-severity-critical bg-bg-primary p-3 text-sm text-text-primary" role="alert">{error}</div>}
         {message && (
           <div className="mt-4 border-l-4 border-status-success bg-bg-primary p-3 text-sm text-text-primary" role="status">
-            {message} <Link className="text-accent-primary hover:underline" to="/login">Go to sign in</Link>
+            <p className="font-medium">Check your email</p>
+            <p className="mt-1">{message}</p>
+            <Link className="mt-2 inline-block text-accent-primary hover:underline" to="/login">Go to sign in</Link>
           </div>
         )}
 

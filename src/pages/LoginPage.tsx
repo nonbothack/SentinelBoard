@@ -26,7 +26,9 @@ export function LoginPage() {
     try {
       const { error: authError } = await supabase.auth.signInWithPassword({ email: email.trim(), password })
       if (authError) {
-        setError('Sign in failed. Check your email and password, then try again.')
+        setError(authError.code === 'email_not_confirmed'
+          ? 'Your email is not verified yet. Open the confirmation link we sent before signing in, and check your spam folder if you cannot find it.'
+          : 'Sign in failed. Check your email and password, then try again.')
         return
       }
       navigate(destination.startsWith('/') ? destination : '/dashboard', { replace: true })
