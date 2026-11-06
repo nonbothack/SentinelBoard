@@ -10,13 +10,15 @@ SentinelBoard is a portfolio project built around real analyst workflows. It sto
 
 > This README describes the current MVP. The Settings route is a placeholder, and scan files are results to upload and review; SentinelBoard does not launch scanners.
 
-## Product preview
+## Screenshots
 
-The visuals below are illustrative previews with fictional demo content. They show the product workflow without exposing records from a signed-in workspace. The live app is available at [sentinelboard-six.vercel.app](https://sentinelboard-six.vercel.app).
+These are captures of SentinelBoard's actual UI components populated with public security records. The event feed shows entries from CISA's KEV catalog release `2026.11.04`, with CVSS 3.1 ratings retrieved from NVD on `2026-11-06`. The ATT&CK view uses techniques cited in CISA/FBI advisory AA25-022A. The public records are rendered locally for these screenshots; they were not added to the production workspace, and SentinelBoard does not automatically ingest CISA KEV data.
 
-![SentinelBoard overview with synthetic activity, event, and incident examples](docs/screenshots/sentinelboard-showcase.svg)
+![SentinelBoard event feed showing current CISA KEV records with NVD severity and remediation details](docs/screenshots/event-feed-cisa.jpg)
 
-![SentinelBoard event triage view with fictional, documentation-only sample telemetry](docs/screenshots/event-triage-preview.svg)
+![SentinelBoard ATT&CK view showing techniques reported in CISA/FBI advisory AA25-022A](docs/screenshots/attack-map-cisa.jpg)
+
+Sources: [CISA Known Exploited Vulnerabilities catalog](https://www.cisa.gov/known-exploited-vulnerabilities-catalog), [CISA KEV JSON feed](https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json), [NVD CVE API](https://services.nvd.nist.gov/rest/json/cves/2.0), [CISA/FBI AA25-022A advisory](https://www.cisa.gov/sites/default/files/2025-02/aa25-022a-threat-actors-chained-vulnerabilities-in-ivanti-cloud-service-applications_2.pdf), and [MITRE ATT&CK Enterprise](https://attack.mitre.org/).
 
 ## Features
 

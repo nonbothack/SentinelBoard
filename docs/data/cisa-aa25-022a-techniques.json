@@ -1,0 +1,13 @@
+{
+  "advisory": "AA25-022A",
+  "title": "Threat Actors Chained Vulnerabilities in Ivanti Cloud Service Applications",
+  "published": "2025-01-22",
+  "sourceUrl": "https://www.cisa.gov/sites/default/files/2025-02/aa25-022a-threat-actors-chained-vulnerabilities-in-ivanti-cloud-service-applications_2.pdf",
+  "techniqueIds": [
+    "T1071.001",
+    "T1219",
+    "T1552.001",
+    "T1564.002"
+  ],
+  "note": "Technique IDs explicitly cited in the public CISA/FBI advisory; technique names and descriptions come from the bundled MITRE ATT&CK Enterprise data."
+}
