@@ -42,6 +42,13 @@ describe('parseCisaKevCatalog', () => {
     })
   })
 
+  it('normalizes the official timestamp form of dateReleased to a UTC date', () => {
+    expect(parseCisaKevCatalog(catalog({ dateReleased: '2026-11-06T19:44:45.1797Z' }))).toMatchObject({
+      dateReleased: '2026-11-06',
+      vulnerabilities: [{ catalog_released: '2026-11-06' }],
+    })
+  })
+
   it('rejects a catalog whose declared count differs from its records', () => {
     expect(() => parseCisaKevCatalog(catalog({ count: 2 }))).toThrow(/count does not match/)
   })

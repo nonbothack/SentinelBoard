@@ -47,6 +47,19 @@ function validDate(value: unknown, field: string) {
   return date
 }
 
+function validCatalogReleaseDate(value: unknown) {
+  const releasedAt = requiredText(value, 'dateReleased')
+  if (/^\d{4}-\d{2}-\d{2}$/.test(releasedAt)) return validDate(releasedAt, 'dateReleased')
+
+  if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/.test(releasedAt)) {
+    throw new Error('CISA KEV record has an invalid dateReleased.')
+  }
+
+  const parsed = new Date(releasedAt)
+  if (!Number.isFinite(parsed.getTime())) throw new Error('CISA KEV record has an invalid dateReleased.')
+  return validDate(parsed.toISOString().slice(0, 10), 'dateReleased')
+}
+
 function parseEntry(value: unknown, catalogVersion: string, catalogReleased: string): CisaKevEntry {
   if (!isRecord(value)) throw new Error('CISA KEV vulnerability entries must be objects.')
   const cveId = requiredText(value.cveID, 'cveID').toUpperCase()
@@ -87,7 +100,7 @@ function parseEntry(value: unknown, catalogVersion: string, catalogReleased: str
 export function parseCisaKevCatalog(value: unknown): CisaKevCatalog {
   if (!isRecord(value)) throw new Error('CISA KEV catalog must be a JSON object.')
   const catalogVersion = requiredText(value.catalogVersion, 'catalogVersion')
-  const dateReleased = validDate(value.dateReleased, 'dateReleased')
+  const dateReleased = validCatalogReleaseDate(value.dateReleased)
   const count = value.count
   const rawEntries = value.vulnerabilities
   if (!Number.isSafeInteger(count) || Number(count) < 1) throw new Error('CISA KEV catalog has an invalid count.')
