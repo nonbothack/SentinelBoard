@@ -197,6 +197,4 @@ JSON can be one event, an array, or an object with an `events` array. Accepted f
 
 See [IMPROVEMENTS.md](IMPROVEMENTS.md) for the architectural roadmap, remaining planned features (including Sigma rule generation and attack graph exploration), and interview talking points. Incident response playbooks reference [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final).
 
-## Author
 
-Built by [@nonbothack](https://github.com/nonbothack). The developer profile includes a Google Vulnerability Reward Program P2/S2 bug bounty with $500 paid and the Google Cybersecurity Professional Certificate in progress.
