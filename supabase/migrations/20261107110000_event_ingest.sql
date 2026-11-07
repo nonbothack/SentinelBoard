@@ -37,13 +37,13 @@ SET search_path = ''
 AS $$
 DECLARE
   token_row public.event_ingest_tokens%ROWTYPE;
-  current_time timestamptz := clock_timestamp();
+  v_now timestamptz := clock_timestamp();
 BEGIN
   SELECT * INTO token_row
   FROM public.event_ingest_tokens AS tokens
   WHERE tokens.token_hash = p_token_hash
     AND tokens.revoked_at IS NULL
-    AND (tokens.expires_at IS NULL OR tokens.expires_at > current_time)
+    AND (tokens.expires_at IS NULL OR tokens.expires_at > v_now)
   FOR UPDATE;
 
   IF NOT FOUND THEN
@@ -51,11 +51,11 @@ BEGIN
     RETURN;
   END IF;
 
-  IF token_row.rate_window_started_at <= current_time - interval '1 minute' THEN
+  IF token_row.rate_window_started_at <= v_now - interval '1 minute' THEN
     UPDATE public.event_ingest_tokens AS tokens
-    SET rate_window_started_at = current_time,
+    SET rate_window_started_at = v_now,
         rate_window_count = 1,
-        last_used_at = current_time
+        last_used_at = v_now
     WHERE tokens.id = token_row.id;
     RETURN QUERY SELECT token_row.user_id, token_row.id, true;
     RETURN;
@@ -68,7 +68,7 @@ BEGIN
 
   UPDATE public.event_ingest_tokens AS tokens
   SET rate_window_count = tokens.rate_window_count + 1,
-      last_used_at = current_time
+      last_used_at = v_now
   WHERE tokens.id = token_row.id;
   RETURN QUERY SELECT token_row.user_id, token_row.id, true;
 END;
