@@ -1,0 +1,7 @@
+project_id = "sentinelboard"
+
+[functions.sync-cisa-kev]
+verify_jwt = false
+
+[functions.ingest-event]
+verify_jwt = false

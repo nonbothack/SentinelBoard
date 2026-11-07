@@ -8,11 +8,11 @@ SentinelBoard is a portfolio project built around real analyst workflows. It sto
 
 **Live app:** [sentinelboard-six.vercel.app](https://sentinelboard-six.vercel.app)
 
-> This README describes the current MVP. The Settings route is a placeholder, and scan files are results to upload and review; SentinelBoard does not launch scanners.
+> Scan files are results to upload and review; SentinelBoard does not launch scanners. CISA KEV sync and external event ingestion require their Supabase migrations and Edge Functions to be deployed.
 
 ## Screenshots
 
-These are captures of SentinelBoard's actual UI components populated with public security records. The event feed shows entries from CISA's KEV catalog release `2026.11.04`, with CVSS 3.1 ratings retrieved from NVD on `2026-11-06`. The ATT&CK view uses techniques cited in CISA/FBI advisory AA25-022A. The public records are rendered locally for these screenshots; they were not added to the production workspace, and SentinelBoard does not automatically ingest CISA KEV data.
+These are captures of SentinelBoard's actual UI components populated with public security records. The event feed shows entries from CISA's KEV catalog release `2026.11.04`, with CVSS 3.1 ratings retrieved from NVD on `2026-11-06`. The ATT&CK view uses techniques cited in CISA/FBI advisory AA25-022A. The public records are rendered locally for these screenshots; they were not added to the production workspace. The live KEV catalog feature requires the sync function and Vault configuration described below.
 
 ![SentinelBoard event feed showing current CISA KEV records with NVD severity and remediation details](docs/screenshots/event-feed-cisa.jpg)
 
@@ -28,6 +28,9 @@ Sources: [CISA Known Exploited Vulnerabilities catalog](https://www.cisa.gov/kno
 - **ATT&CK map:** search the bundled Enterprise ATT&CK technique data and review event tags.
 - **Scan results:** upload Nuclei JSON/JSONL or Nmap XML results up to 10 MB. Files are parsed in the browser; the source file is stored in a private Supabase Storage bucket.
 - **Incident tracker:** create incidents, transition their status, attach events and IOCs, review an activity timeline, and download a Markdown report.
+- **Response playbooks:** track analyst checklist progress for ransomware, account compromise, phishing, and web exploitation incidents. Playbooks are guided prompts aligned with NIST SP 800-61 Rev. 3; they do not execute response actions.
+- **CISA KEV:** match scan finding CVEs against the CISA Known Exploited Vulnerabilities catalog. A daily catalog sync runs after its Supabase function, migration, and Vault values are configured.
+- **Event ingestion:** create per-source bearer tokens in Settings and send normalized JSON, Suricata EVE, Wazuh, CEF, or RFC 5424 syslog to the event-ingestion endpoint.
 - **Authentication:** email and password sign-up/sign-in with email confirmation.
 
 ## Tech stack
@@ -52,6 +55,9 @@ flowchart LR
   Realtime["Supabase Realtime<br/>event inserts"]
   Storage[(Private scan-files bucket)]
   Edge["enrich-ioc<br/>Supabase Edge Function"]
+  Ingest["ingest-event<br/>token-authenticated webhook"]
+  CISA["CISA KEV feed<br/>daily sync"]
+  SIEM["External security source"]
   VT[VirusTotal]
   Abuse[AbuseIPDB]
   OTX[AlienVault OTX]
@@ -62,6 +68,9 @@ flowchart LR
   Realtime --> Analyst
   Analyst -->|Upload scan result| Storage
   Analyst -->|Authenticated invocation| Edge
+  SIEM -->|Bearer ingest token| Ingest
+  Ingest --> DB
+  CISA -->|Daily catalog sync| DB
   Edge --> VT
   Edge --> Abuse
   Edge --> OTX
@@ -104,6 +113,8 @@ Vite serves the app at `http://localhost:5173`. Add that URL to Supabase Auth's 
 The full database schema is version-controlled under `supabase/migrations/`:
 - `20261106000000_initial_schema.sql`: Provisions all core tables (`profiles`, `events`, `attack_techniques`, `event_techniques`, `iocs`, `ioc_enrichments`, `scan_uploads`, `scan_findings`, `incidents`, `incident_iocs`, `incident_events`), automated timestamp triggers, and Row Level Security (RLS) policies.
 - `20261106190000_incident_activity.sql`: Provisions the incident investigation timeline and activity audit log.
+- `20261107100000_cisa_kev.sql`: Provisions the KEV catalog and daily Cron job. Add `sentinelboard_project_url` and the project's `default` secret API key to Supabase Vault for the scheduled function call.
+- `20261107110000_event_ingest.sql`: Adds event idempotency keys, hashed ingest-token storage, RLS, and atomic per-token request limiting.
 - `supabase/seed/attack_techniques.sql`: Seeds 706 MITRE ATT&CK Enterprise techniques.
 
 To link the Supabase CLI to a project, apply migrations, and deploy the enrichment function:
@@ -113,9 +124,14 @@ npx supabase@latest login
 npx supabase@latest link --project-ref YOUR_PROJECT_REF
 npx supabase@latest db push
 npx supabase@latest functions deploy enrich-ioc
+npx supabase@latest functions deploy sync-cisa-kev
+npx supabase@latest functions deploy ingest-event
+npx supabase@latest functions deploy manage-ingest-token
 ```
 
 Before invoking enrichment, configure `VT_API_KEY`, `ABUSEIPDB_API_KEY`, and `OTX_API_KEY` as Edge Function secrets in the Supabase project settings. Use the dashboard's secret fields or a secure secret manager; avoid pasting key values into shell commands. Do not put provider keys in `.env.local`, Vercel frontend variables, or committed files. Only the Supabase URL and anon key belong in the frontend environment.
+
+To enable the daily CISA KEV sync, add the project's Supabase URL and its `default` secret API key to Vault as `sentinelboard_project_url` and `sentinelboard_project_secret`. The migration creates the daily Cron job; the KEV table remains empty until the sync function is deployed and these Vault values are set.
 
 ## Database overview
 
@@ -135,6 +151,8 @@ The app reads and writes the following Supabase tables. User-owned rows are prot
 | `incident_iocs` | Incident-to-IOC links |
 | `incident_events` | Incident-to-event links |
 | `incident_activity` | Incident investigation timeline |
+| `cisa_kev_entries` | Cached CISA Known Exploited Vulnerabilities catalog |
+| `event_ingest_tokens` | Hashed event-ingestion credentials and rate-limit state |
 
 The private `scan-files` Storage bucket contains source scan files under a user-scoped path. The `events` table is published to Supabase Realtime for the live feed.
 
@@ -144,8 +162,21 @@ The private `scan-files` Storage bucket contains source scan files under a user-
 - **AbuseIPDB v2:** IP address checks.
 - **AlienVault OTX:** IP, domain, and file-hash context. OTX does not enrich URL indicators in this implementation.
 - **MITRE ATT&CK:** Enterprise technique data is bundled with the app; technique lookup does not call a remote API on each view.
+- **CISA KEV:** Official catalog JSON is validated before synchronized rows are refreshed. Scan CVEs are matched locally against the cached catalog.
 
 Each applicable provider is queried independently, so a provider error or rate limit can be shown alongside other provider results. Provider quotas and response coverage depend on the providers' current plans.
+
+### External event ingestion
+
+Create a named token from **Settings → Event ingestion tokens**. The plaintext token is shown once; store it in the source system's secret manager. Tokens are stored as SHA-256 hashes, expire after 90 days, and can be revoked from Settings. Each token allows 60 requests per minute. Each request is limited to 1 MB and 100 events. Repeated events with the same source event ID from the same token are ignored; events without one receive a deterministic idempotency key.
+
+```http
+POST https://YOUR_PROJECT_REF.supabase.co/functions/v1/ingest-event
+Authorization: Bearer sb_ingest_<token>
+Content-Type: application/json
+```
+
+JSON can be one event, an array, or an object with an `events` array. Accepted fields include `title`/`message`, `severity`, `category`, `event_time`/`timestamp`, `source_ip`/`src_ip`, `dest_ip`/`dst_ip`, `hostname`, and `external_id`/`event_id`. Suricata EVE fields, common Wazuh fields, CEF, and RFC 5424 syslog are normalized into the same event table. Workspace ownership and the `webhook` source are assigned by the server; payload `user_id`, `source`, and `is_sample` values are ignored. Responses include accepted, duplicate, and invalid-event counts.
 
 ## Security considerations
 
@@ -157,14 +188,14 @@ Each applicable provider is queried independently, so a provider error or rate l
 
 ## Known limitations & roadmap
 
-- The Settings page is an MVP-scope placeholder.
 - Scan visualization accepts existing Nuclei or Nmap output; it does not launch scanners.
-- Event JSON import is implemented; CSV import and automated webhook ingestion are scheduled for v1.1.
+- Event ingestion supports the documented JSON, CEF, and RFC 5424 formats; additional vendor-specific schemas may need mapping.
+- The CISA KEV catalog is populated only when the scheduled sync has been deployed and its Vault values are configured.
 - The live feed subscribes to event inserts; it is not a general-purpose distributed streaming pipeline.
 - IOC verdicts reflect provider data available at query time, can be cached, and can be incomplete or rate-limited.
 - No AI-generated analysis or automated remediation is included.
 
-See [IMPROVEMENTS.md](IMPROVEMENTS.md) for the detailed architectural roadmap, planned features (CISA KEV live feeds, Sigma rule generator, attack graph), and interview talking points.
+See [IMPROVEMENTS.md](IMPROVEMENTS.md) for the architectural roadmap, remaining planned features (including Sigma rule generation and attack graph exploration), and interview talking points. Incident response playbooks reference [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final).
 
 ## Author
 

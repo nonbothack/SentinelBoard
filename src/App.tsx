@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react'
 import type { ReactNode } from 'react'
-import { BrowserRouter, Navigate, Outlet, Route, Routes, useLocation } from 'react-router-dom'
+import { BrowserRouter, Navigate, Outlet, Route, Routes } from 'react-router-dom'
 import { AuthProvider, useAuth } from '@/contexts/AuthContext'
 import { Layout } from '@/components/Layout'
 import { ProtectedRoute } from '@/components/ProtectedRoute'
@@ -13,6 +13,7 @@ const ScanResultsPage = lazy(() => import('@/pages/ScanResultsPage').then((modul
 const IncidentsPage = lazy(() => import('@/pages/IncidentsPage').then((module) => ({ default: module.IncidentsPage })))
 const LoginPage = lazy(() => import('@/pages/LoginPage').then((module) => ({ default: module.LoginPage })))
 const SignupPage = lazy(() => import('@/pages/SignupPage').then((module) => ({ default: module.SignupPage })))
+const SettingsPage = lazy(() => import('@/pages/SettingsPage').then((module) => ({ default: module.SettingsPage })))
 
 function PageLoading() {
   return (
@@ -49,23 +50,6 @@ function RouteLoading() {
   )
 }
 
-const pendingModules: Record<string, { title: string; task: string }> = {
-  '/settings': { title: 'Settings', task: 'MVP scope' },
-}
-
-function PendingModulePage() {
-  const { pathname } = useLocation()
-  const module = pendingModules[pathname] ?? pendingModules['/dashboard']
-
-  return (
-    <section className="flex h-full min-h-72 flex-col justify-center gap-2 p-6" aria-labelledby="pending-title">
-      <p className="font-mono text-xs uppercase tracking-wide text-text-tertiary">Not included · {module.task}</p>
-      <h1 id="pending-title" className="text-xl font-semibold text-text-primary">{module.title}</h1>
-      <p className="max-w-lg text-sm text-text-secondary">Settings are outside the implementation tasks in the current MVP blueprint.</p>
-    </section>
-  )
-}
-
 function AppRoutes() {
   return (
     <Routes>
@@ -82,9 +66,7 @@ function AppRoutes() {
           <Route path="attack" element={<LazyPage><AttackMapPage /></LazyPage>} />
           <Route path="scans" element={<LazyPage><ScanResultsPage /></LazyPage>} />
           <Route path="incidents" element={<LazyPage><IncidentsPage /></LazyPage>} />
-          {Object.keys(pendingModules).map((path) => (
-            <Route key={path} path={path.slice(1)} element={<PendingModulePage />} />
-          ))}
+          <Route path="settings" element={<LazyPage><SettingsPage /></LazyPage>} />
           <Route path="*" element={<Navigate to="/dashboard" replace />} />
         </Route>
       </Route>

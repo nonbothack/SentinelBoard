@@ -2,7 +2,7 @@ import { supabase } from '@/lib/supabase'
 import type { Event, Incident, IncidentActivity, IncidentEvent, IncidentIOC, IOC } from '@/types/database'
 
 export type IncidentStatus = Incident['status']
-export type IncidentActivityAction = 'incident_created' | 'incident_updated' | 'status_changed' | 'ioc_attached' | 'event_attached'
+export type IncidentActivityAction = 'incident_created' | 'incident_updated' | 'status_changed' | 'ioc_attached' | 'event_attached' | 'playbook_selected' | 'playbook_step_toggled'
 export const incidentStatusBadgeClass: Record<IncidentStatus, string> = {
   open: 'border-severity-high text-severity-high',
   investigating: 'border-status-pending text-status-pending',

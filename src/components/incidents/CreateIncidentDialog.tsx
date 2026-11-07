@@ -12,6 +12,7 @@ import {
 } from '@/components/ui/dialog'
 import { useAuth } from '@/contexts/AuthContext'
 import { recordIncidentActivity } from '@/lib/incidents'
+import { incidentPlaybooks, type PlaybookId } from '@/lib/incident-playbooks'
 import { supabase } from '@/lib/supabase'
 import type { Incident, IncidentSeverity } from '@/types/database'
 
@@ -26,6 +27,7 @@ export function CreateIncidentDialog({ onCreated }: CreateIncidentDialogProps) {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [severity, setSeverity] = useState<IncidentSeverity>('medium')
+  const [playbookId, setPlaybookId] = useState<PlaybookId | ''>('')
   const [error, setError] = useState('')
   const [busy, setBusy] = useState(false)
   const { user } = useAuth()
@@ -72,10 +74,18 @@ export function CreateIncidentDialog({ onCreated }: CreateIncidentDialogProps) {
     } catch {
       notice = 'Incident created, but its timeline entry could not be saved.'
     }
+    if (playbookId) {
+      try {
+        await recordIncidentActivity({ incidentId: incident.id, actorId: user.id, action: 'playbook_selected', details: { playbook_id: playbookId } })
+      } catch {
+        notice = 'Incident created, but its selected response playbook could not be saved.'
+      }
+    }
     onCreated(incident, notice)
     setTitle('')
     setDescription('')
     setSeverity('medium')
+    setPlaybookId('')
     setOpen(false)
     toast.success('Incident created.')
   }
@@ -101,6 +111,13 @@ export function CreateIncidentDialog({ onCreated }: CreateIncidentDialogProps) {
             Severity
             <select className="h-9 w-full rounded-md border border-border-default bg-bg-input px-3 text-sm" id="incident-severity" onChange={(event) => setSeverity(event.target.value as IncidentSeverity)} value={severity}>
               {severities.map((value) => <option key={value} value={value}>{value}</option>)}
+            </select>
+          </label>
+          <label className="block space-y-1 text-xs font-medium" htmlFor="incident-playbook">
+            Response playbook (optional)
+            <select className="h-9 w-full rounded-md border border-border-default bg-bg-input px-3 text-sm" id="incident-playbook" onChange={(event) => setPlaybookId(event.target.value as PlaybookId | '')} value={playbookId}>
+              <option value="">Choose later</option>
+              {incidentPlaybooks.map((playbook) => <option key={playbook.id} value={playbook.id}>{playbook.title}</option>)}
             </select>
           </label>
           {error && <p className="border-l-4 border-severity-critical bg-bg-secondary p-2 text-sm" role="alert">{error}</p>}

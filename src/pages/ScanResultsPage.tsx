@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { FileSearch } from 'lucide-react'
 import { CommandBar } from '@/components/CommandBar'
@@ -7,6 +7,7 @@ import { ScanResultsView } from '@/components/scan/ScanResultsView'
 import { SplitPane } from '@/components/SplitPane'
 import { Skeleton } from '@/components/ui/skeleton'
 import { useAuth } from '@/contexts/AuthContext'
+import type { CisaKevMatch } from '@/lib/cisa-kev'
 import { formatRelativeTime } from '@/lib/format-time'
 import { supabase } from '@/lib/supabase'
 import type { ScanFinding, ScanUpload } from '@/types/database'
@@ -41,6 +42,34 @@ export function ScanResultsPage() {
       return (data ?? []) as ScanFinding[]
     },
   })
+
+  const cveIds = useMemo(() => [...new Set((findings.data ?? []).flatMap((finding) => finding.cve_ids ?? []))].sort(), [findings.data])
+  const kevEntries = useQuery({
+    queryKey: ['cisa-kev-matches', cveIds],
+    enabled: Boolean(user && findings.isSuccess && cveIds.length > 0),
+    queryFn: async () => {
+      const { data: catalog, error: catalogError } = await supabase
+        .from('cisa_kev_entries')
+        .select('catalog_version,catalog_released')
+        .order('synced_at', { ascending: false })
+        .limit(1)
+        .maybeSingle()
+      if (catalogError) throw catalogError
+      if (!catalog) return { entries: [] as CisaKevMatch[], catalogVersion: null as string | null, catalogReleased: null as string | null }
+
+      const matches: CisaKevMatch[] = []
+      for (let offset = 0; offset < cveIds.length; offset += 100) {
+        const { data, error } = await supabase
+          .from('cisa_kev_entries')
+          .select('cve_id,vendor_project,product,vulnerability_name,required_action,due_date,known_ransomware_campaign_use,catalog_version')
+          .in('cve_id', cveIds.slice(offset, offset + 100))
+        if (error) throw error
+        matches.push(...(data ?? []) as CisaKevMatch[])
+      }
+      return { entries: matches, catalogVersion: catalog.catalog_version, catalogReleased: catalog.catalog_released }
+    },
+  })
+  const kevByCve = useMemo(() => new Map((kevEntries.data?.entries ?? []).map((entry) => [entry.cve_id, entry])), [kevEntries.data])
 
   function handleUploaded(upload: ScanUpload) {
     setSelectedId(upload.id)
@@ -103,6 +132,11 @@ export function ScanResultsPage() {
             error={findings.isError}
             findings={findings.data ?? []}
             loading={findings.isPending}
+            kevByCve={kevByCve}
+            kevError={cveIds.length > 0 && kevEntries.isError}
+            kevLoading={cveIds.length > 0 && kevEntries.isPending}
+            kevCatalogMissing={Boolean(kevEntries.data && !kevEntries.data.catalogVersion)}
+            kevCatalogVersion={kevEntries.data?.catalogVersion ?? null}
             onRetry={() => void findings.refetch()}
             search={search}
             upload={selectedUpload}

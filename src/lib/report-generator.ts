@@ -1,6 +1,7 @@
 import type { IncidentActivity } from '@/types/database'
 import type { AttachedEvent, AttachedIOC } from '@/lib/incidents'
 import type { Incident } from '@/types/database'
+import { incidentPlaybooks } from '@/lib/incident-playbooks'
 
 export interface IncidentReportInput {
   incident: Incident
@@ -22,6 +23,16 @@ function activityDescription(entry: IncidentActivity) {
     case 'status_changed': return `Changed status from ${String(details.from ?? 'unknown')} to ${String(details.to ?? 'unknown')}`
     case 'ioc_attached': return `Attached IOC ${String(details.value ?? '')}`
     case 'event_attached': return `Attached event “${String(details.title ?? 'event')}”`
+    case 'playbook_selected': {
+      const selected = incidentPlaybooks.find((playbook) => playbook.id === details.playbook_id)
+      return `Selected response playbook: ${selected?.title ?? 'unknown playbook'}`
+    }
+    case 'playbook_step_toggled': {
+      const playbook = incidentPlaybooks.find((candidate) => candidate.id === details.playbook_id)
+      const step = playbook?.steps.find((candidate) => candidate.id === details.step_id)
+      const action = details.completed === true ? 'Completed' : 'Reopened'
+      return `${action} response checklist: ${step?.title ?? 'unknown step'}${playbook ? ` (${playbook.title})` : ''}`
+    }
     default: return `Recorded activity: ${entry.action.replaceAll('_', ' ')}`
   }
 }

@@ -4,6 +4,7 @@ import { Copy, Download, FileText } from 'lucide-react'
 import { AttachEventDialog } from '@/components/incidents/AttachEventDialog'
 import { AttachIOCDialog } from '@/components/incidents/AttachIOCDialog'
 import { IncidentTimeline } from '@/components/incidents/IncidentTimeline'
+import { IncidentPlaybook } from '@/components/incidents/IncidentPlaybook'
 import { StatusTransition } from '@/components/incidents/StatusTransition'
 import { SeverityBadge } from '@/components/ioc/SeverityBadge'
 import { Badge } from '@/components/ui/badge'
@@ -174,6 +175,8 @@ export function IncidentDetailPage({ incident, onUpdated }: IncidentDetailPagePr
       </header>
       {actionError && <p className="border-l-4 border-severity-critical bg-bg-secondary p-3 text-sm" role="alert">{actionError}</p>}
       {actionNotice && <p className="border-l-4 border-severity-medium bg-bg-secondary p-3 text-sm" role="status">{actionNotice}</p>}
+
+      <IncidentPlaybook incidentId={incident.id} entries={timeline.data ?? []} onChanged={refreshActivity} />
 
       <form className="space-y-3 rounded-md border border-border-panel bg-bg-surface p-3" onSubmit={(event) => void saveDetails(event)}>
         <div className="grid gap-3 sm:grid-cols-[minmax(0,1fr)_160px]">

@@ -14,6 +14,7 @@ const event: Event = {
   title: 'Suspicious service activity',
   description: null,
   raw_data: null,
+  external_id: null,
   source_ip: null,
   dest_ip: null,
   hostname: null,

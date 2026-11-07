@@ -42,6 +42,7 @@ export interface Event {
   title: string
   description: string | null
   raw_data: Json | null
+  external_id: string | null
   source_ip: string | null
   dest_ip: string | null
   hostname: string | null

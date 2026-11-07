@@ -43,6 +43,7 @@ export function EventFeedPage() {
   useEffect(() => {
     if (!user?.id) return
     let wasConnected = false
+    let hadConnectionFailure = false
     const channel = supabase
       .channel(`events-feed-${user.id}`)
       .on('postgres_changes', {
@@ -60,11 +61,19 @@ export function EventFeedPage() {
       })
       .subscribe((status) => {
         if (status === 'SUBSCRIBED') {
+          const reconnected = hadConnectionFailure
           wasConnected = true
+          hadConnectionFailure = false
           setRealtime('live')
+          // Reconcile after every successful subscription: Realtime does not replay
+          // events received while this tab was offline or the socket was reconnecting.
+          void queryClient.invalidateQueries({ queryKey: ['events', user.id] })
+          void queryClient.invalidateQueries({ queryKey: ['dashboard', user.id] })
+          if (reconnected) toast.info('Live connection restored. Refreshing recent events…')
           return
         }
         if (status === 'CHANNEL_ERROR' || status === 'TIMED_OUT' || status === 'CLOSED') {
+          if (wasConnected) hadConnectionFailure = true
           setRealtime('disconnected')
           if (wasConnected) toast.info('Reconnecting to the live event feed…')
         }
@@ -72,6 +81,24 @@ export function EventFeedPage() {
 
     return () => {
       void supabase.removeChannel(channel)
+    }
+  }, [queryClient, user?.id])
+
+  useEffect(() => {
+    if (!user?.id) return
+    const recover = () => {
+      if (document.visibilityState === 'visible' && navigator.onLine) {
+        void queryClient.invalidateQueries({ queryKey: ['events', user.id] })
+        void queryClient.invalidateQueries({ queryKey: ['dashboard', user.id] })
+      }
+    }
+    window.addEventListener('online', recover)
+    window.addEventListener('focus', recover)
+    document.addEventListener('visibilitychange', recover)
+    return () => {
+      window.removeEventListener('online', recover)
+      window.removeEventListener('focus', recover)
+      document.removeEventListener('visibilitychange', recover)
     }
   }, [queryClient, user?.id])
 

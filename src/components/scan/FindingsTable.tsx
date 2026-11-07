@@ -1,9 +1,10 @@
 import { useMemo } from 'react'
 import { SeverityBadge } from '@/components/ioc/SeverityBadge'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
+import type { CisaKevMatch } from '@/lib/cisa-kev'
 import type { ScanFinding } from '@/types/database'
 
-export function FindingsTable({ findings, search = '' }: { findings: ScanFinding[]; search?: string }) {
+export function FindingsTable({ findings, search = '', kevByCve = new Map() }: { findings: ScanFinding[]; search?: string; kevByCve?: ReadonlyMap<string, CisaKevMatch> }) {
   const groups = useMemo(() => {
     const filtered = findings.filter((finding) => {
       const query = search.trim().toLowerCase()
@@ -61,6 +62,18 @@ export function FindingsTable({ findings, search = '' }: { findings: ScanFinding
                           ))}
                         </ul>
                       )}
+                      {[...new Set(finding.cve_ids ?? [])].flatMap((cve) => {
+                        const match = kevByCve.get(cve)
+                        return match ? [match] : []
+                      }).map((match) => (
+                        <aside aria-label={`Known exploited vulnerability ${match.cve_id}`} className="mt-2 space-y-1 border-l-4 border-severity-critical bg-bg-primary p-2" key={match.cve_id}>
+                          <p className="text-[10px] font-semibold uppercase tracking-wide text-severity-critical">Known exploited · CISA KEV</p>
+                          <p className="text-[10px] text-text-secondary">{match.vendor_project} {match.product} · remediation due <time className="font-mono" dateTime={match.due_date}>{match.due_date}</time></p>
+                          {match.known_ransomware_campaign_use === 'Known' && <p className="text-[10px] font-semibold text-severity-critical">CISA notes known ransomware campaign use.</p>}
+                          <p className="text-[10px] leading-4 text-text-secondary">{match.required_action}</p>
+                          <a className="text-[10px] text-accent-primary hover:underline" href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" rel="noreferrer" target="_blank">CISA KEV catalog</a>
+                        </aside>
+                      ))}
                     </TableCell>
                   </TableRow>
                 ))}

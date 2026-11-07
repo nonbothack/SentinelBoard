@@ -26,19 +26,21 @@ SentinelBoard was engineered to overcome the high saturation of generic student 
 These improvements address current MVP operational constraints and elevate the platform to commercial-grade engineering standards.
 
 ### 2.1 Complete Settings & Integrations Workspace
-* **Current State:** The `/settings` route exists as an MVP placeholder.
+* **Status: Partial.** Settings now manages event-ingestion tokens; analyst notifications, custom threat-intelligence provider credentials, and theme/density preferences remain planned.
+* **Current State:** `/settings` provides event-ingestion token creation, revocation, and endpoint guidance.
 * **Improvement:**
   * Build out custom API Key Management: Allow analysts to bring their own threat intelligence keys (VirusTotal Enterprise, Shodan, Censys, GreyNoise) stored encrypted via Supabase Vault or user-scoped encrypted columns.
-  * Webhook Configuration: UI for generating user-scoped ingestion webhook URLs and bearer tokens.
+  * Webhook Configuration: Implemented as part of 2.2; the UI creates user-scoped bearer tokens.
   * Analyst Notification Preferences: Webhook dispatch to Slack, Microsoft Teams, or Discord on `critical` severity events.
   * Theme & Density Controls: Toggle between "Compact Tactical" (current Direction C default) and "Expanded Audit" table views.
 
-### 2.2 Ingestion Webhook Endpoint (`/api/v1/events/ingest`)
-* **Current State:** Events enter the system via client-side JSON file upload or the sample data loader.
+### 2.2 Ingestion Webhook Endpoint (`ingest-event` Supabase Edge Function)
+* **Status: Implemented in the application branch.** Supabase deployment remains required before production use.
+* **Current State:** Events can enter via JSON import, the sample data loader, or the new per-user bearer-token endpoint.
 * **Improvement:**
   * Deploy a Supabase Edge Function `ingest-event` accepting HTTP POST requests with a Bearer Token.
   * Standardize log normalization: Accept common formats (CEF, Syslog RFC 5424, Suricata EVE JSON, Wazuh alerts) and map them to the SentinelBoard `events` schema.
-  * Enables live integration: A developer or interviewer can point a real Wazuh agent, auditd forwarder, or Cowrie honeypot directly at their SentinelBoard instance.
+  * Enables direct integrations for sources that can emit the supported formats; vendor-specific formats require an adapter.
 
 ### 2.3 Automated Storage Lifecycle & Cascade Cleanups
 * **Current State:** Deleting a `scan_uploads` record removes database rows via SQL foreign keys, but source files in the private `scan-files` storage bucket must be cleaned up manually.
@@ -46,10 +48,11 @@ These improvements address current MVP operational constraints and elevate the p
   * Implement a PostgreSQL database webhook or trigger on `scan_uploads` deletion that invokes a storage cleanup function via Supabase Storage API, ensuring zero orphaned files.
 
 ### 2.4 Resilient Realtime Connection Management
+* **Status: Implemented for missed-event recovery.** The feed reconciles on subscription recovery and when an online tab regains focus or visibility.
 * **Current State:** The frontend subscribes to Supabase Realtime on mount; network drops rely on standard client reconnection.
 * **Improvement:**
-  * Wrap the Realtime subscription in an exponential-backoff resilient hook with visual connection state indicators (Connected / Reconnecting / Offline) in the top status bar.
-  * Buffer incoming events in memory during brief network hiccups and reconcile missed sequences via timestamp query on reconnection.
+  * Supabase Realtime manages socket reconnection and the existing feed indicator reports connection state.
+  * Re-fetch the latest 500 events and dashboard data after successful subscriptions, browser focus, visibility restoration, and network recovery to recover missed events.
 
 ---
 
@@ -58,10 +61,11 @@ These improvements address current MVP operational constraints and elevate the p
 These features directly demonstrate senior-level SOC operations, detection engineering, and threat intelligence workflows.
 
 ### 3.1 Live Threat Intelligence Auto-Feed (CISA KEV Integration)
+* **Status: Implemented in the application branch.** Production catalog population requires applying the migration, deploying the sync function, and storing the two Vault values described in the README.
 * **Concept:** Connect SentinelBoard to live, authoritative government threat feeds.
 * **Implementation:**
   * Scheduled Edge Function (Cron) pulling the daily [CISA Known Exploited Vulnerabilities (KEV) Catalog](https://www.cisa.gov/known-exploited-vulnerabilities-catalog).
-  * Auto-correlate uploaded Nuclei scan findings against CISA KEV CVE IDs, tagging matches with a prominent `KNOWN EXPLOITED (CISA KEV)` high-priority warning banner.
+  * Match uploaded scan findings against CISA KEV CVE IDs and display a prominent known-exploited warning with remediation details.
 * **Resume Impact:** Demonstrates understanding of federal vulnerability management mandates and risk-based prioritization.
 
 ### 3.2 Detection Engineering: Sigma & YARA Rule Generator
@@ -83,7 +87,8 @@ These features directly demonstrate senior-level SOC operations, detection engin
   * Allow clicking any node to inspect raw JSON payloads, trigger ad-hoc enrichment, or add to case files.
 * **Resume Impact:** Demonstrates visual engineering capability and deep understanding of attacker lateral movement.
 
-### 3.4 Structured Incident Response Playbooks (NIST SP 800-61 / SANS)
+### 3.4 Structured Incident Response Playbooks (NIST SP 800-61 Rev. 3)
+* **Status: Implemented in the application branch.** Checklist activity is stored in the existing incident timeline and requires no additional table.
 * **Concept:** Transform the Incident Tracker from a simple Kanban into an operational IR playbook runner.
 * **Implementation:**
   * When an incident is created, allow selecting a Playbook Template:
@@ -91,13 +96,9 @@ These features directly demonstrate senior-level SOC operations, detection engin
     * *Unauthorized SSH / RDP Brute Force*
     * *Phishing / Credential Harvesting*
     * *Web Application Exploitation (SQLi / SSRF)*
-  * The incident view renders structured stage checklists:
-    1. **Identification:** Verify indicators, scope affected assets.
-    2. **Containment:** Isolate host, block egress IPs on perimeter firewall.
-    3. **Eradication:** Revoke compromised tokens, wipe persistence mechanisms.
-    4. **Recovery:** Restore from verified backups, monitor telemetry for reinfection.
-    5. **Lessons Learned:** Root-cause analysis and automated timeline generation.
-* **Resume Impact:** Proves the candidate understands enterprise SOC compliance, standard operating procedures, and NIST guidance.
+  * Templates cover ransomware/malware, account compromise, phishing, and web exploitation.
+  * Checklist entries map to the Govern, Identify, Protect, Detect, Respond, and Recover functions in the current NIST incident response guidance. They are analyst prompts; no mitigation is automated.
+* **Resume Impact:** Demonstrates structured incident coordination and documented response guidance.
 
 ### 3.5 Executive & Technical PDF Report Generator
 * **Concept:** While Markdown reports are developer-friendly, executive stakeholders and audit teams require formatted compliance documentation.
@@ -128,19 +129,19 @@ Expand beyond the three base providers to provide full attack surface context:
 ## 5. Priority 4: DevSecOps, Testing & Quality Assurance
 
 ### 5.1 Automated CI/CD Pipeline
+* **Status: Implemented in the application branch.** GitHub Actions verifies pull requests and pushes to `main`; Vercel deployments remain managed by the repository integration.
 * **GitHub Actions Workflow (`.github/workflows/ci.yml`):**
-  * Stage 1: Static analysis using `oxlint` and TypeScript strict compilation (`tsc --noEmit`).
-  * Stage 2: Vitest unit and integration test suite execution with code coverage enforcement (>85% target).
-  * Stage 3: Dependency vulnerability audit via `npm audit --audit-level=high` or Snyk.
-  * Stage 4: Automated Vercel Preview deployment validation.
+  * Run `oxlint`, Vitest, strict TypeScript/Vite production build, Playwright end-to-end flows, and a production dependency audit that fails on high-severity findings.
 
 ### 5.2 End-to-End (E2E) Browser Testing
-* Integrate **Playwright** to execute automated regression flows against preview deployments:
+* **Status: Implemented in the application branch.** Playwright runs against local Vite with mocked Supabase responses, so CI does not require production credentials.
+* Integrate **Playwright** to execute automated regression flows:
   * User authentication & session refresh.
   * Submitting an IOC and validating enrichment card rendering.
-  * Uploading a sample Nmap XML file and verifying parsed port counts.
-  * Tagging an event with an ATT&CK technique and verifying counter increment.
+  * Uploading Nuclei scan JSON and verifying CISA KEV match rendering.
+  * Tagging an event with an ATT&CK technique and verifying the tag appears on the event.
   * Exporting an incident report.
+  * Re-fetching the event feed after a browser focus recovery.
 
 ---
 

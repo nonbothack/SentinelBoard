@@ -3,6 +3,7 @@ import { SeverityChart } from '@/components/scan/SeverityChart'
 import { FindingsTable } from '@/components/scan/FindingsTable'
 import { SeverityBadge } from '@/components/ioc/SeverityBadge'
 import { Skeleton } from '@/components/ui/skeleton'
+import type { CisaKevMatch } from '@/lib/cisa-kev'
 import type { ScanFinding, ScanUpload, Severity } from '@/types/database'
 
 interface ScanResultsViewProps {
@@ -12,11 +13,16 @@ interface ScanResultsViewProps {
   loading: boolean
   error: boolean
   onRetry: () => void
+  kevByCve: ReadonlyMap<string, CisaKevMatch>
+  kevLoading: boolean
+  kevError: boolean
+  kevCatalogMissing: boolean
+  kevCatalogVersion: string | null
 }
 
 const severityOrder: Severity[] = ['critical', 'high', 'medium', 'low', 'info']
 
-export function ScanResultsView({ upload, findings, search, loading, error, onRetry }: ScanResultsViewProps) {
+export function ScanResultsView({ upload, findings, search, loading, error, onRetry, kevByCve, kevLoading, kevError, kevCatalogMissing, kevCatalogVersion }: ScanResultsViewProps) {
   const counts = useMemo(() => Object.fromEntries(severityOrder.map((severity) => [severity, findings.filter((finding) => finding.severity === severity).length])) as Record<Severity, number>, [findings])
   const hasFindings = findings.length > 0
 
@@ -41,6 +47,11 @@ export function ScanResultsView({ upload, findings, search, loading, error, onRe
         </>
       )}
 
+      {kevLoading && <p className="text-xs text-text-tertiary" role="status">Checking CVE identifiers against the CISA KEV catalog…</p>}
+      {kevError && <p className="border-l-4 border-severity-medium bg-bg-secondary p-2 text-xs text-text-secondary" role="status">CISA KEV status is unavailable right now; scan severity has not been changed.</p>}
+      {kevCatalogMissing && <p className="border-l-4 border-severity-medium bg-bg-secondary p-2 text-xs text-text-secondary" role="status">The CISA KEV catalog has not been synced yet. Catalog matching will appear after setup.</p>}
+      {kevCatalogVersion && <p className="text-[10px] text-text-tertiary">CVE checks use CISA KEV catalog {kevCatalogVersion}.</p>}
+
       {upload.parse_status === 'error' ? (
         <div className="border-l-4 border-severity-critical bg-bg-secondary p-3 text-sm" role="alert">
           {upload.parse_error ?? 'This scan could not be processed.'}
@@ -61,7 +72,7 @@ export function ScanResultsView({ upload, findings, search, loading, error, onRe
       ) : (
         <section aria-label="Scan findings by host" className="space-y-2">
           <h3 className="text-xs font-semibold uppercase tracking-wide text-text-secondary">Findings by host</h3>
-          <FindingsTable findings={findings} search={search} />
+          <FindingsTable findings={findings} kevByCve={kevByCve} search={search} />
         </section>
       )}
     </article>

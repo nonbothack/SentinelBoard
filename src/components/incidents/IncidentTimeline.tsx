@@ -1,5 +1,6 @@
 import { Activity } from 'lucide-react'
 import { Skeleton } from '@/components/ui/skeleton'
+import { incidentPlaybooks } from '@/lib/incident-playbooks'
 import { formatRelativeTime } from '@/lib/format-time'
 import type { IncidentActivity } from '@/types/database'
 
@@ -9,6 +10,12 @@ const actionDescriptions: Record<string, (details: Record<string, unknown>) => s
   status_changed: (details) => `Changed status from ${String(details.from ?? 'unknown')} to ${String(details.to ?? 'unknown')}`,
   ioc_attached: (details) => `Attached IOC ${String(details.value ?? '')}`,
   event_attached: (details) => `Attached event “${String(details.title ?? 'event')}”`,
+  playbook_selected: (details) => `Selected the ${incidentPlaybooks.find((playbook) => playbook.id === details.playbook_id)?.title ?? 'response'} playbook`,
+  playbook_step_toggled: (details) => {
+    const playbook = incidentPlaybooks.find((candidate) => candidate.id === details.playbook_id)
+    const step = playbook?.steps.find((candidate) => candidate.id === details.step_id)
+    return `${details.completed === true ? 'Completed' : 'Reopened'} response checklist step: ${step?.title ?? 'unknown step'}`
+  },
 }
 
 interface IncidentTimelineProps {
