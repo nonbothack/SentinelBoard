@@ -110,7 +110,7 @@ export function SettingsPage() {
       <section className="rounded-md border border-border-panel bg-bg-surface p-4" aria-labelledby="external-ingest-title">
         <h2 className="text-sm font-semibold" id="external-ingest-title">Endpoint</h2>
         <code className="mt-2 block overflow-x-auto rounded bg-bg-primary p-3 font-mono text-xs text-text-secondary">POST {import.meta.env.VITE_SUPABASE_URL}/functions/v1/ingest-event</code>
-        <p className="mt-2 text-xs text-text-secondary">Send a JSON event, an array of up to 100 events, CEF, or RFC 5424 syslog with <code>Authorization: Bearer &lt;token&gt;</code>. Request limit: 1 MB. See the repository README for payload details.</p>
+        <p className="mt-2 text-xs text-text-secondary">Send a JSON event, an array of up to 100 events, CEF, or RFC 5424 syslog with the Supabase public <code>apikey</code> and your <code>X-Ingest-Token</code>. Request limit: 1 MB. See the repository README for payload details.</p>
       </section>
     </main>
   )

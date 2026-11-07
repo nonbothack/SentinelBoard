@@ -172,7 +172,8 @@ Create a named token from **Settings → Event ingestion tokens**. The plaintext
 
 ```http
 POST https://YOUR_PROJECT_REF.supabase.co/functions/v1/ingest-event
-Authorization: Bearer sb_ingest_<token>
+apikey: <SUPABASE_ANON_KEY>
+X-Ingest-Token: sb_ingest_<token>
 Content-Type: application/json
 ```
 

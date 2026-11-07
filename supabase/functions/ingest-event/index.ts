@@ -51,8 +51,11 @@ async function readLimitedBody(request: Request) {
 
 const handler = withSupabase({ auth: 'none' }, async (request, context) => {
   if (request.method !== 'POST') return jsonError('Method not allowed.', 405)
-  const match = request.headers.get('authorization')?.match(/^Bearer (sb_ingest_[0-9a-f]{64})$/i)
-  if (!match) return jsonError('A valid event ingest bearer token is required.', 401)
+  // Supabase's gateway reserves Authorization for its own JWT/API-key auth.
+  // Keep the workspace credential in a separate header so it can be combined
+  // with the project's public `apikey` header by external senders.
+  const match = request.headers.get('x-ingest-token')?.trim().match(/^(sb_ingest_[0-9a-f]{64})$/i)
+  if (!match) return jsonError('A valid X-Ingest-Token header is required.', 401)
 
   let body: string | null
   try { body = await readLimitedBody(request) } catch { return jsonError('Request body must be valid UTF-8.', 400) }
