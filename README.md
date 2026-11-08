@@ -187,6 +187,13 @@ JSON can be one event, an array, or an object with an `events` array. Accepted f
 - Treat imported event and scan content as untrusted input. Avoid importing sensitive telemetry into the publicly accessible deployment.
 - Configure Supabase Auth Site URL and redirect allowlist for the production domain and local development origins.
 
+## Security
+
+SentinelBoard's CI pipeline runs `npm audit --omit=dev --audit-level=high` on every push. The current check passes at the `high` threshold; a full `npm audit` reports 8 low/moderate vulnerability findings:
+
+- **`react-router-dom` v6**: Two moderate advisories cover open redirects when attacker-supplied paths reach `<Link>` or `useNavigate`, and constructor injection during manual SSR/hydration. SentinelBoard uses internal route targets in a client-side SPA, so the affected navigation and SSR conditions are not part of its current flow. An upgrade to v7.18.5 is tracked for a future release.
+- **`shadcn` CLI, `deepmerge`, and `minimatch`**: These packages are not imported into the production Vite bundle. However, `shadcn` is currently declared under `dependencies`, so its transitive advisories remain in the production install/audit tree. Moving the CLI to `devDependencies` should be handled as a separate dependency-manifest change. Do not run `npm audit fix --force`; it would trigger breaking upgrades.
+
 ## Known limitations & roadmap
 
 - Scan visualization accepts existing Nuclei or Nmap output; it does not launch scanners.
